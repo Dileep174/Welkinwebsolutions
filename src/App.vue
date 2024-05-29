@@ -1,8 +1,35 @@
-<script setup>
+<script>
 import HelloWorld from './components/HelloWorld.vue'
+import Posts from './components//Posts.vue'
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+
+export default {
+  name: 'App',
+  components: { Posts, HelloWorld },
+  setup() {
+      const posts = ref([]);
+
+      onMounted(() => {
+        const fetchPosts = async () => {
+          const res = await fetch(
+            'http://localhost/tailwind/wp-json/wp/v2/pages'
+          );
+          const data = await res.json();
+          posts.value = data;
+        };
+        fetchPosts();
+      });
+
+      return {
+        posts,
+      };
+    },
+  };
 </script>
 
 <template>
+  <Posts :wpPosts="posts" />
   <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
@@ -12,6 +39,7 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  
 </template>
 
 <style scoped>
