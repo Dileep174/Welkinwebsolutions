@@ -16,6 +16,5 @@ export default {
               <h3>{{ post.title.rendered }}</h3>
               <!-- <h1>{{ post.slug.rendered }}</h1> -->
               <div v-html="post.content.rendered"></div>
-
           </div>
 </template>
