@@ -1,16 +1,18 @@
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 import Home from './components/Home.vue'
+import Page from './components/Page.vue';
 
 export default {
   name: 'App',
-  components: {  Home },
+  components: {  Home, Page },
 
   };
 </script>
 
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <Page />
+  <!-- <HelloWorld msg="Vite + Vue" /> -->
   <Home />
 </template>
 

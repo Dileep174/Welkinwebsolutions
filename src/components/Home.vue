@@ -33,26 +33,72 @@ export default {
           }
         }
       ],
-      services: [
+      services: {
+        title: 'WHAT WE DO?',
+        heading: 'Grow Your Business </br>With <span class="text-primary"> Welkin Solutions </span>',
+        description: "tempus, lectus risus In' perdiel tellus, sed faucibus ipsum ipsurn nun neque.",
+        cards: [
+          {
+            name: 'Web Design',
+            description: 'Twit are excet Frond, rnatie boy grub it\'s tell gone to pot MI Mrs nut butts horse play blow',
+            image: '../assets/img/webdesign.svg',
+            link: '#'
+          },
+          {
+            name: 'Web Development',
+            description: 'Twit are excet Frond, rnatie boy grub it\'s tell gone to pot MI Mrs nut butts horse play blow',
+            image: '../assets/img/webdevelopment.svg',
+            link: '#'
+          },
+          {
+            name: 'Media Marketing',
+            description: 'Twit are excet Frond, rnatie boy grub it\'s tell gone to pot MI Mrs nut butts horse play blow',
+            image: '../assets/img/media_marketting.svg',
+            link: '#'
+          }
+        ]
+      },
+      technologies: [
         {
-          name: 'Web Design',
-          description: 'Twit are excet Frond, rnatie boy grub it\'s tell gone to pot MI Mrs nut butts horse play blow',
-          image: '../assets/img/webdesign.svg',
-          link: '#'
+          name: 'WordPress',
+          image: '../assets/img/wp.png',
+          width: '153px',
+          height: '35px'
         },
         {
-          name: 'Web Development',
-          description: 'Twit are excet Frond, rnatie boy grub it\'s tell gone to pot MI Mrs nut butts horse play blow',
-          image: '../assets/img/webdevelopment.svg',
-          link: '#'
+          name: 'Shopify',
+          image: '../assets/img/shpyfy.png',
+          width: '153px',
+          height: '35px'
         },
         {
-          name: 'Media Marketing',
-          description: 'Twit are excet Frond, rnatie boy grub it\'s tell gone to pot MI Mrs nut butts horse play blow',
-          image: '../assets/img/media_marketting.svg',
-          link: '#'
+          name: 'PHP',
+          image: '../assets/img/php1.png',
+          width: '153px',
+          height: '35px'
+        },
+        {
+          name: 'Laravel',
+          image: '../assets/img/larave.png',
+          width: '153px',
+          height: '35px'
+        },
+        {
+          name: 'CodeIgniter',
+          image: '../assets/img/codeigniter.png',
+          width: '153px',
+          height: '35px'
+        },
+        {
+          name: 'ClickFunnels',
+          image: '../assets/img/clickfunnel 1.png',
+          width: '153px',
+          height: '35px'
         }
-      ]
+      ],
+        
+        
+
     }
   }
 };
@@ -143,13 +189,17 @@ export default {
     <!-- /section -->
     <section class="wrapper bg-grey">
       <div class="container pt-3 pb-4 pb-md-4">
-        <!-- header content -->
         <div class="row text-center">
-          <!-- header content -->
+          <div class="col-md-10 offset-md-1 col-xxl-8 offset-xxl-2">
+            <h2 class="fs-16 text-uppercase text-primary mb-3">{{ services.title }}</h2>
+            <h3 class="display-4 mb-2" v-html="services.heading"></h3>
+            <p class="mb-10">{{ services.description }}</p>
+          </div>
+          <!-- /column -->
         </div>
         <!-- /.row -->
         <div class="row gx-md-8 gy-8 mb-15 mb-md-14 text-center">
-          <div class="col-md-6 col-lg-4" v-for="service in services" :key="service.name">
+          <div class="col-md-6 col-lg-4" v-for="service in services.cards" :key="service.name">
             <div class="mybox">
               <img :src="service.image" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5 myanimation"
                 alt="" />
@@ -173,66 +223,14 @@ export default {
           <div class="col-lg-12 mx-auto text-center">
             <h3 class="py-10 display-4"> Our Technologies </h3>
 
-
             <div class="swiper-container mb-10" data-margin="30" data-nav="true" data-dots="false" data-items-xl="6"
               data-items-md="2" data-items-xs="1">
               <div class="swiper">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <img src="../assets/img/wp.png" style="width: 153px; height:35px">
+                  <div class="swiper-slide" v-for="technology in technologies" :key="technology.name">
+                    <img :src="technology.image" :style="{ width: technology.width, height: technology.height }" />
                   </div>
                   <!--/.swiper-slide -->
-                  <div class="swiper-slide">
-                    <img src="../assets/img/shpyfy.png" style="width: 153px; height:35px">
-                  </div>
-                  <!--/.swiper-slide -->
-                  <div class="swiper-slide">
-                    <img src="../assets/img/php1.png" style="width: 153px; height:35px">
-                  </div>
-                  <!--/.swiper-slide -->
-                  <div class="swiper-slide">
-                    <img src="../assets/img/larave.png" style="width: 153px; height:35px">
-                  </div>
-                  <!--/.swiper-slide -->
-                  <div class="swiper-slide">
-                    <img src="../assets/img/codeigniter.png" style="width: 153px; height:35px">
-                  </div>
-                  <!--/.swiper-slide -->
-
-                  <!--/.swiper-slide -->
-                  <div class="swiper-slide">
-                    <img src="../assets/img/clickfunnel 1.png" style="width: 153px; height:35px">
-                  </div>
-                  <!--/.swiper-slide -->
-
-                  <div class="swiper-slide">
-                    <img src="../assets/img/wp.png" style="width: 153px; height:35px">
-                  </div>
-                  <!--/.swiper-slide -->
-                  <div class="swiper-slide">
-                    <img src="../assets/img/shpyfy.png" style="width: 153px; height:35px">
-                  </div>
-                  <!--/.swiper-slide -->
-                  <div class="swiper-slide">
-                    <img src="../assets/img/php1.png" style="width: 153px; height:35px">
-                  </div>
-                  <!--/.swiper-slide -->
-                  <div class="swiper-slide">
-                    <img src="../assets/img/larave.png" style="width: 153px; height:35px">
-                  </div>
-                  <!--/.swiper-slide -->
-                  <div class="swiper-slide">
-                    <img src="../assets/img/codeigniter.png" style="width: 153px; height:35px">
-                  </div>
-                  <!--/.swiper-slide -->
-
-                  <!--/.swiper-slide -->
-                  <div class="swiper-slide">
-                    <img src="../assets/img/clickfunnel 1.png" style="width: 153px; height:35px">
-                  </div>
-                  <!--/.swiper-slide -->
-
-
                 </div>
                 <!--/.swiper-wrapper -->
               </div>

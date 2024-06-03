@@ -1,33 +1,55 @@
+// HelloWorld.vue
 <template>
-    <div v-if="page">
-      <h1>{{ page.title.rendered }}</h1>
-      <div v-html="page.content.rendered"></div>
+  <div>
+    <div v-if="error">
+      <p>Error: {{ error }}</p>
     </div>
-  </template>
-  
-  <script>
-  import { ref, onMounted } from 'vue';
-  import { useRoute } from 'vue-router';
-  
-  export default {
-    name: 'Page',
-    setup() {
-      const route = useRoute();
-      const page = ref(null);
-  
-      onMounted(() => {
-        const fetchPage = async () => {
-          const res = await fetch(`https://welkinwebsolutions.com.au/wp-json/wp/v2/pages/${route.params.id}`);
-          const data = await res.json();
-          page.value = data;
-        };
-        fetchPage();
-      });
-  
-      return {
-        page
+    <div v-else>
+      <div v-if="post" class="post-section">
+        <h3>{{ post.title.rendered }}</h3>
+        <div v-html="post.excerpt.rendered"></div>
+        <div v-if="image">
+      <img :src="image.source" :alt="image.alt" />
+    </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+
+export default {
+  name: 'Page',
+  setup() {
+    const post = ref(null);
+    const error = ref(null);
+    const pageId = 9; // Replace with the ID of the page you want to fetch
+
+    onMounted(() => {
+      const fetchPost = async () => {
+        try {
+          const res = await axios.get(`https://techsolution.au//wp-json/wp/v2/pages/${pageId}`);
+          post.value = res.data;
+        } catch (err) {
+          error.value = err.message;
+          console.error('Fetch error:', err);
+        }
       };
-    }
-  };
-  </script>
-  
+      fetchPost();
+    });
+
+    return {
+      post,
+      error,
+    };
+  },
+};
+</script>
+
+<style>
+.post-section {
+  /* Add your styles here */
+}
+</style>
