@@ -1,33 +1,54 @@
+// HelloWorld.vue
+<template>
+  <div>
+    <h1>HelloWorld</h1>
+    <div v-if="error">
+      <!-- <p>Error: {{ error }}</p> -->
+    </div>
+    <div v-else>
+      <div v-if="post" class="post-section">
+        <!-- <h3>{{ post.acf.hero.title}}</h3> -->
+        <!-- <div v-html="post.slug.rendered"></div> -->
+        <!-- <h1>{{ post.template }}</h1> -->
+      </div>
+    </div>
+  </div>
+</template>
+
 <script>
 import { ref, onMounted } from 'vue';
+import axios from 'axios';
 
 export default {
-    name: 'HelloWorld',
-    setup() {
-        const posts = ref([]);
+  name: 'HelloWorld',
+//   setup() {
+//     const post = ref(null);
+//     const error = ref(null);
+//     const pageId = 8; // Replace with the ID of the page you want to fetch
 
-        onMounted(() => {
-            const fetchPosts = async () => {
-                const res = await fetch(
-                    'https://welkinwebsolutions.com.au/wp-json/wp/v2/pages'
-                );
-                const data = await res.json();
-                posts.value = data;
-            };
-            fetchPosts();
-        });
+//     onMounted(() => {
+//       const fetchPost = async () => {
+//         try {
+//           const res = await axios.get(`http://localhost/wp/welkin-wp/wp-json/wp/v2/pages/${pageId}`);
+//           post.value = res.data;
+//         } catch (err) {
+//           error.value = err.message;
+//           console.error('Fetch error:', err);
+//         }
+//       };
+//       fetchPost();
+//     });
 
-        return {
-            posts,
-        };
-    },
+//     return {
+//       post,
+//       error,
+//     };
+//   },
 };
 </script>
 
-<template>
-    <div v-for="post in posts" :key="post.id" class="post-card">
-        <h3>{{ post.title.rendered }}</h3>
-        <!-- <h1>{{ post.slug.rendered }}</h1> -->
-        <!-- <div v-html="post.content.rendered"></div> -->
-    </div>
-</template>
+<style>
+.post-section {
+  /* Add your styles here */
+}
+</style>
