@@ -1,20 +1,54 @@
-<script>
-export default {
-    name: 'Posts',
-    props: {
-        posts: {
-            type: Array,
-            required: true
-        }
-    }
-}
-</script>
-
 
 <template>
-     <div v-for="post in posts" :key="post.id" class="post-card">
-              <h3>{{ post.acf.hero.title }}</h3>
-              <!-- <h1>{{ post.slug.rendered }}</h1> -->
-              <!-- <div v-html="post.content.rendered"></div> -->
-          </div>
+    <div>
+    <h1>Page Detail</h1>
+    <div v-if="loading">Loading...</div>
+    <div v-if="error">{{ error }}</div>
+    <div v-if="page">
+      <h3>{{ page.title.rendered }}</h3>
+      <div v-html="page.acf.hero.title"></div>
+    </div>
+  </div>
 </template>
+
+<script>
+import { ref, onMounted } from 'vue';
+import { fetchPageById } from '../services/apiService';
+
+export default {
+  name: 'Posts',
+  props: {
+    pageId: {
+      type: Number,
+      required: true,
+    },
+  },
+  setup(props) {
+    const page = ref(null);
+    const loading = ref(true);
+    const error = ref(null);
+
+    onMounted(async () => {
+      try {
+        page.value = await fetchPageById(props.pageId);
+      } catch (err) {
+        error.value = 'Failed to load page';
+      } finally {
+        loading.value = false;
+      }
+    });
+
+    return {
+      page,
+      loading,
+      error,
+    };
+  },
+};
+</script>
+
+<style>
+.post-section {
+  /* Add your styles here */
+}
+</style>

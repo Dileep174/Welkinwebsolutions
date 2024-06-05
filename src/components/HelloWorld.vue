@@ -1,49 +1,49 @@
-// HelloWorld.vue
+
 <template>
-  <div>
-    <h1>HelloWorld</h1>
-    <div v-if="error">
-      <!-- <p>Error: {{ error }}</p> -->
-    </div>
-    <div v-else>
-      <div v-if="post" class="post-section">
-        <!-- <h3>{{ post.acf.hero.title}}</h3> -->
-        <!-- <div v-html="post.slug.rendered"></div> -->
-        <!-- <h1>{{ post.template }}</h1> -->
-      </div>
+    <div>
+    <h1>Page Detail</h1>
+    <div v-if="loading">Loading...</div>
+    <div v-if="error">{{ error }}</div>
+    <div v-if="page">
+      <h3>{{ page.title.rendered }}</h3>
+      <div v-html="page.acf.hero.title"></div>
     </div>
   </div>
 </template>
 
 <script>
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import { fetchPageById } from '../services/apiService';
 
 export default {
   name: 'HelloWorld',
-//   setup() {
-//     const post = ref(null);
-//     const error = ref(null);
-//     const pageId = 8; // Replace with the ID of the page you want to fetch
+  props: {
+    pageId: {
+      type: Number,
+      required: true,
+    },
+  },
+  setup(props) {
+    const page = ref(null);
+    const loading = ref(true);
+    const error = ref(null);
 
-//     onMounted(() => {
-//       const fetchPost = async () => {
-//         try {
-//           const res = await axios.get(`http://localhost/wp/welkin-wp/wp-json/wp/v2/pages/${pageId}`);
-//           post.value = res.data;
-//         } catch (err) {
-//           error.value = err.message;
-//           console.error('Fetch error:', err);
-//         }
-//       };
-//       fetchPost();
-//     });
+    onMounted(async () => {
+      try {
+        page.value = await fetchPageById(props.pageId);
+      } catch (err) {
+        error.value = 'Failed to load page';
+      } finally {
+        loading.value = false;
+      }
+    });
 
-//     return {
-//       post,
-//       error,
-//     };
-//   },
+    return {
+      page,
+      loading,
+      error,
+    };
+  },
 };
 </script>
 

@@ -1,16 +1,11 @@
-// HelloWorld.vue
 <template>
   <div>
-    <div v-if="error">
-      <p>Error: {{ error }}</p>
-    </div>
-    <div v-else>
-      <div v-if="post" class="post-section">
-        <h3>{{ post.title.rendered }}</h3>
-        <div v-html="post.excerpt.rendered"></div>
-        <div v-if="image">
-      <img :src="image.source" :alt="image.alt" />
-    </div>
+    <h1>Pages List</h1>
+    <div v-if="loading">Loading...</div>
+    <div v-if="error">{{ error }}</div>
+    <div v-if="pages.length">
+      <div v-for="page in pages" :key="page.id" class="page-card">
+        <h3>{{ page.title.rendered }}</h3>
       </div>
     </div>
   </div>
@@ -18,30 +13,28 @@
 
 <script>
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import { fetchPages } from '../services/apiService';
 
 export default {
   name: 'Page',
   setup() {
-    const post = ref(null);
+    const pages = ref([]);
+    const loading = ref(true);
     const error = ref(null);
-    const pageId = 9; // Replace with the ID of the page you want to fetch
 
-    onMounted(() => {
-      const fetchPost = async () => {
-        try {
-          const res = await axios.get(`https://techsolution.au//wp-json/wp/v2/pages/${pageId}`);
-          post.value = res.data;
-        } catch (err) {
-          error.value = err.message;
-          console.error('Fetch error:', err);
-        }
-      };
-      fetchPost();
+    onMounted(async () => {
+      try {
+        pages.value = await fetchPages();
+      } catch (err) {
+        error.value = 'Failed to load pages';
+      } finally {
+        loading.value = false;
+      }
     });
 
     return {
-      post,
+      pages,
+      loading,
       error,
     };
   },
@@ -49,7 +42,9 @@ export default {
 </script>
 
 <style>
-.post-section {
-  /* Add your styles here */
+.page-card {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
 }
 </style>
