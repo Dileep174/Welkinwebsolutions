@@ -1,236 +1,199 @@
 <script>
+import { ref, onMounted } from 'vue';
+import { fetchPages } from '../services/apiService';
 
 export default {
   name: 'Home',
-  data() {
-    return {
-      navbarItems: [
-        { title: 'Home', href: 'index.html' },
-        { title: 'Our Services', href: 'services.html' },
-        { title: 'Our Projects', href: 'projects.html' },
-        { title: 'About Us', href: 'about.html' },
-        { title: 'Testimonials', href: 'testimonial.html' }
-      ],
-      socialMedia: [
-        { href: '#', icon: 'uil uil-twitter' },
-        { href: '#', icon: 'uil uil-facebook-f' },
-        { href: '#', icon: 'uil uil-dribbble' },
-        { href: '#', icon: 'uil uil-instagram' },
-        { href: '#', icon: 'uil uil-youtube' }
-      ],
-      sections: [
-        {
-          title: 'AWARD WINNING COMPANY',
-          heading: 'We Are The Best in',
-          description: 'You need to get positive results when you spend hard earned revenue and time on any marketing effort. Great returns on marketing and promotions.',
-          button: {
-            href: '#',
-            text: 'Start Your Project'
-          },
-          image: {
-            src: '../assets/img/myslider.png',
-            alt: ''
-          }
-        }
-      ],
-      services: {
-        title: 'WHAT WE DO?',
-        heading: 'Grow Your Business </br>With <span class="text-primary"> Welkin Solutions </span>',
-        description: "tempus, lectus risus In' perdiel tellus, sed faucibus ipsum ipsurn nun neque.",
-        cards: [
-          {
-            name: 'Web Design',
-            description: 'Twit are excet Frond, rnatie boy grub it\'s tell gone to pot MI Mrs nut butts horse play blow',
-            image: '../assets/img/webdesign.svg',
-            link: '#'
-          },
-          {
-            name: 'Web Development',
-            description: 'Twit are excet Frond, rnatie boy grub it\'s tell gone to pot MI Mrs nut butts horse play blow',
-            image: '../assets/img/webdevelopment.svg',
-            link: '#'
-          },
-          {
-            name: 'Media Marketing',
-            description: 'Twit are excet Frond, rnatie boy grub it\'s tell gone to pot MI Mrs nut butts horse play blow',
-            image: '../assets/img/media_marketting.svg',
-            link: '#'
-          }
-        ]
-      },
-      technologies: [
-        {
-          name: 'WordPress',
-          image: '../assets/img/wp.png',
-          width: '153px',
-          height: '35px'
-        },
-        {
-          name: 'Shopify',
-          image: '../assets/img/shpyfy.png',
-          width: '153px',
-          height: '35px'
-        },
-        {
-          name: 'PHP',
-          image: '../assets/img/php1.png',
-          width: '153px',
-          height: '35px'
-        },
-        {
-          name: 'Laravel',
-          image: '../assets/img/larave.png',
-          width: '153px',
-          height: '35px'
-        },
-        {
-          name: 'CodeIgniter',
-          image: '../assets/img/codeigniter.png',
-          width: '153px',
-          height: '35px'
-        },
-        {
-          name: 'ClickFunnels',
-          image: '../assets/img/clickfunnel 1.png',
-          width: '153px',
-          height: '35px'
-        }
-      ],
-        
-        
+  setup() {
+    const pages = ref([]);
+    const loading = ref(true);
+    const error = ref(null);
 
-    }
-  }
+    onMounted(async () => {
+      try {
+        pages.value = await fetchPages();
+      } catch (err) {
+        error.value = 'Failed to load pages';
+      } finally {
+        loading.value = false;
+      }
+    });
+
+    return {
+      pages,
+      loading,
+      error,
+    };
+  },
 };
 </script>
 
 <template>
 
-
-
+ 
 
   <div class="content-wrapper">
-    <header class="wrapper bg-soft-primary">
-      <nav class="navbar navbar-expand-lg center-nav transparent navbar-light bg-white">
-        <div class="container flex-lg-row flex-nowrap align-items-center">
-          <div class="navbar-brand w-100">
-            <a href="index.html">
-              <img src="../assets/img/logo.png">
-            </a>
-          </div>
-          <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
-            <div class="offcanvas-header d-lg-none">
-              <h3 class="text-white fs-30 mb-0"> Welkin Solutions </h3>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
-              <ul class="navbar-nav">
-                <li v-for="(item, index) in navbarItems" :key="index">
-                  <a :href="item.href" class="nav-link hover">
-                    {{ item.title }}
-                  </a>
-                </li>
-              </ul>
-              <!-- /.navbar-nav -->
-              <div class="offcanvas-footer d-lg-none">
-                <div>
-                  <a href="contact.html" class="btn btn-sm btn-primary rounded">Contact Us</a>
-                  <br />
-                  <nav class="nav social social-white mt-4">
-                    <a v-for="(social, index) in socialMedia" :key="index" :href="social.href">
-                      <i :class="social.icon"></i>
-                    </a>
-                  </nav>
-                  <!-- /.social -->
-                </div>
-              </div>
-              <!-- /.offcanvas-footer -->
-            </div>
-            <!-- /.offcanvas-body -->
-          </div>
-          <!-- /.navbar-collapse -->
-          <div class="navbar-other w-25 d-flex ms-auto">
-            <ul class="navbar-nav flex-row align-items-center ms-auto">
-              <li class="nav-item d-none d-md-block">
-                <a href="contact.html" class="btn btn-sm btn-primary rounded">Contact Us</a>
-              </li>
-              <li class="nav-item d-lg-none">
-                <button class="hamburger offcanvas-nav-btn"><span></span></button>
-              </li>
-            </ul>
-            <!-- /.navbar-nav -->
-          </div>
-          <!-- /.navbar-other -->
-        </div>
-        <!-- /.container -->
-      </nav>
-      <!-- /.navbar -->
-    </header>
     <!-- /header -->
     <section class="wrapper bg-soft-primary">
-      <div class="container">
-        <div class="row p-40 align-items-center text-center text-lg-start">
-          <div class="col-lg-6" v-for="(item, index) in sections" :key="index">
-            <div class="mb-4 text-primary">{{ item.title }}</div>
-            <h1 class="display-1 mb-5 mx-md-10 mx-lg-0">{{ item.heading }}</h1>
-            <p class="lead fs-24 lh-sm mb-7 pe-xxl-15">{{ item.description }}</p>
-            <div class="d-inline-flex me-2">
-              <a :href="item.button.href" class="btn btn-lg btn-grape rounded">{{ item.button.text }}</a>
-            </div>
+    <div class="container">
+      <div class="row p-40 align-items-center text-center text-lg-start"  v-for="page in pages" :key="page.id">
+        <!-- <div>
+    <h1>Page Detail</h1>
+    <div v-if="loading">Loading...</div>
+    <div v-if="error">{{ error }}</div>
+    <div v-if="page">
+      <h3>{{ page.title.rendered }}</h3>
+      <div v-html="page.content.rendered"></div>
+    </div>
+  </div> -->
+        <div class="col-lg-6" data-cues="slideInDown" data-group="page-title" data-delay="900">
+          <div class="mb-4 text-primary">{{ page.acf.hero.title }}</div>
+          
+          <h1 class="display-1 mb-5 mx-md-10 mx-lg-0" data-cue="slideInDown" data-group="page-title" data-delay="600" data-show="true" style="animation-name: slideInDown; animation-duration: 700ms; animation-timing-function: ease; animation-delay: 600ms; animation-direction: normal; animation-fill-mode: both;">
+            {{ page.acf.hero.heading.fix_heading }} <br>
+            <span class="typer text-primary text-nowrap" data-delay="100" :data-words="page.acf.hero.heading.rewrite.split(',')" style="color: black;">easy</span>
+            <span class="cursor text-primary" data-owner="typer" style="transition: all 0.1s ease 0s; opacity: 0;">|</span>
+          </h1>
+          
+          <p class="lead fs-24 lh-sm mb-7 pe-xxl-15">{{ page.acf.hero.description }}</p>
+          
+          <div class="d-inline-flex me-2">
+            <a href="#" class="btn btn-lg btn-{{ page.acf.hero.button }} rounded"> Start Your Project </a>
           </div>
-          <div class="col-10 col-md-7 col-lg-6" v-for="(item, index) in sections" :key="index">
-            <img class="img-fluid" :src="item.image.src" :alt="item.image.alt" />
-          </div>
+          
         </div>
+        <!--/column -->
+        <div class="col-10 col-md-7 col-lg-6" data-cue="zoomIn" data-show="true" style="animation-name: zoomIn; animation-duration: 1700ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
+          <img class="img-fluid" src="../assets/img/myslider.png.png" data-cue="fadeIn" data-delay="300" alt="" />
+        </div>
+        <!--/column -->
       </div>
-      <figure><img src="../assets/img/clouds.png" alt=""></figure>
-    </section>
+      <!-- /.row -->
+    </div>
+    <!-- /.container -->
+    <figure>
+      <img src="../assets/img/cloud.png" alt="">
+    </figure>
+  </section>
     <!-- /section -->
     <section class="wrapper bg-grey">
       <div class="container pt-3 pb-4 pb-md-4">
         <div class="row text-center">
           <div class="col-md-10 offset-md-1 col-xxl-8 offset-xxl-2">
-            <h2 class="fs-16 text-uppercase text-primary mb-3">{{ services.title }}</h2>
-            <h3 class="display-4 mb-2" v-html="services.heading"></h3>
-            <p class="mb-10">{{ services.description }}</p>
+            <h2 class="fs-16 text-uppercase text-primary mb-3">What We Do?</h2>
+            <h3 class="display-4 mb-2">Grow Your Business </br>With <span class="text-primary"> Welkin Solutions </span>  </h3>
+            <p class="mb-10"> tempus, lectus risus In' perdiel tellus, sed faucibus ipsum ipsurn nun neque.  </p>
           </div>
           <!-- /column -->
         </div>
         <!-- /.row -->
         <div class="row gx-md-8 gy-8 mb-15 mb-md-14 text-center">
-          <div class="col-md-6 col-lg-4" v-for="service in services.cards" :key="service.name">
+        
+          <!--/column -->
+         
+          <div class="col-md-6 col-lg-4">
             <div class="mybox">
-              <img :src="service.image" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5 myanimation"
-                alt="" />
-              <h1>{{ service.name }}</h1>
-              <p class="mb-2">{{ service.description }}</p>
-              <a :href="service.link" class="more hover">Learn More</a>
+              <img src="../assets/img/webdesign.svg" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5 myanimation" alt="" />
+              <h1>Web Design</h1>
+              <p class="mb-2">Twit are excet  Frond, rnatie boy grub it's tell gone to pot MI Mrs nut butts horse play blow </p>
+              <a href="#" class="more hover">Learn More</a>
             </div>
           </div>
+          
+          <!--/column -->
+          <div class="col-md-6 col-lg-4 ">
+            <div class="mybox">
+              <img src="../assets/img/webdevelopment.svg" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5 myanimation" alt="" />
+              <h1>Web Development</h1>
+              <p class="mb-2">Twit are excet  Frond, rnatie boy grub it's tell gone to pot MI Mrs nut butts horse play blow </p>
+              <a href="#" class="more hover">Learn More</a>
+            </div>
+          </div>
+          <!--/column -->
+          <div class="col-md-6 col-lg-4">
+            <div class="mybox">
+              <img src="../assets/img/media_marketting.svg" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5 myanimation" alt="" />
+              <h1>Media Marketing</h1>
+              <p class="mb-2"> Twit are excet  Frond, rnatie boy grub it's tell gone to pot MI Mrs nut butts horse play blow </p>
+              <a href="#" class="more hover">Learn More</a>
+            </div>
+          </div>
+          <!--/column -->
         </div>
-        <!-- /.row -->
+        <!--/.row -->
+
       </div>
       <!-- /.container -->
     </section>
     <!-- /section -->
 
 
-
+  
     <section class="wrapper bg-soft-primary">
       <div class="container py-44 py-md-4">
         <div class="row mb-2 mt-2">
           <div class="col-lg-12 mx-auto text-center">
-            <h3 class="py-10 display-4"> Our Technologies </h3>
+            <h3 class="py-10 display-4"> Our Technologies  </h3>
+            
 
-            <div class="swiper-container mb-10" data-margin="30" data-nav="true" data-dots="false" data-items-xl="6"
-              data-items-md="2" data-items-xs="1">
+            <div class="swiper-container mb-10" data-margin="30" data-nav="true" data-dots="false" data-items-xl="6" data-items-md="2" data-items-xs="1">
               <div class="swiper">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide" v-for="technology in technologies" :key="technology.name">
-                    <img :src="technology.image" :style="{ width: technology.width, height: technology.height }" />
+                  <div class="swiper-slide">
+               <img src="../assets/img/wp.png" style="width: 153px; height:35px"> 
                   </div>
                   <!--/.swiper-slide -->
+                  <div class="swiper-slide">
+                    <img src="../assets/img/shpyfy.png" style="width: 153px; height:35px"> 
+                  </div>
+                  <!--/.swiper-slide -->
+                  <div class="swiper-slide">
+                    <img src="../assets/img/php1.png" style="width: 153px; height:35px"> 
+                  </div>
+                  <!--/.swiper-slide -->
+                  <div class="swiper-slide">
+                    <img src="../assets/img/larave.png" style="width: 153px; height:35px"> 
+                  </div>
+                  <!--/.swiper-slide -->
+                  <div class="swiper-slide">
+                    <img src="../assets/img/codeigniter.png" style="width: 153px; height:35px"> 
+                  </div>
+                  <!--/.swiper-slide -->
+        
+                    <!--/.swiper-slide -->
+                    <div class="swiper-slide">
+                      <img src="../assets/img/clickfunnel 1.png" style="width: 153px; height:35px"> 
+                    </div>
+                    <!--/.swiper-slide -->
+        
+                    <div class="swiper-slide">
+                      <img src="../assets/img/wp.png" style="width: 153px; height:35px"> 
+                         </div>
+                         <!--/.swiper-slide -->
+                         <div class="swiper-slide">
+                           <img src="../assets/img/shpyfy.png" style="width: 153px; height:35px"> 
+                         </div>
+                         <!--/.swiper-slide -->
+                         <div class="swiper-slide">
+                           <img src="../assets/img/php1.png" style="width: 153px; height:35px"> 
+                         </div>
+                         <!--/.swiper-slide -->
+                         <div class="swiper-slide">
+                           <img src="../assets/img/larave.png" style="width: 153px; height:35px"> 
+                         </div>
+                         <!--/.swiper-slide -->
+                         <div class="swiper-slide">
+                           <img src="../assets/img/codeigniter.png" style="width: 153px; height:35px"> 
+                         </div>
+                         <!--/.swiper-slide -->
+         
+                           <!--/.swiper-slide -->
+                           <div class="swiper-slide">
+                             <img src="../assets/img/clickfunnel 1.png" style="width: 153px; height:35px"> 
+                           </div>
+                           <!--/.swiper-slide -->
+        
+        
                 </div>
                 <!--/.swiper-wrapper -->
               </div>
@@ -241,7 +204,7 @@ export default {
           <!-- /column -->
         </div>
         <!-- /.row -->
-
+        
         <!-- /.row -->
       </div>
       <!-- /.container -->

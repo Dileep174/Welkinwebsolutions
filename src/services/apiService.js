@@ -4,7 +4,7 @@ import axios from 'axios';
 const API_BASE_URL = 'http://localhost/wp/welkin-wp/wp-json/wp/v2';
 
 export const fetchPages = async () => {
-  const response = await axios.get(`${API_BASE_URL}/pages`);
+  const response = await axios.get(`${API_BASE_URL}/pages/8`);
   return response.data;
 };
 

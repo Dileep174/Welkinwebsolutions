@@ -1,5 +1,4 @@
 <template>
-  <h1>this is header</h1>
   <header class="wrapper bg-soft-primary">
     <nav class="navbar navbar-expand-lg center-nav transparent navbar-light bg-white">
       <div class="container flex-lg-row flex-nowrap align-items-center">
@@ -60,6 +59,7 @@
     </nav>
     <!-- /.navbar -->
   </header>
+  <RouterView></RouterView>
 </template>
 
 <script>
@@ -67,7 +67,7 @@ import { ref, onMounted } from 'vue';
 import { fetchMenuItems } from '../services/apiService';
 
 export default {
-  name: 'HeaderComponent',
+  name: 'Header',
   setup() {
     const menuItems = ref([]);
 

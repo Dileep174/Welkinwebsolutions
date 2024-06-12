@@ -10,17 +10,18 @@ import Contact from '../views/Contact.vue';
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
-  { path: '/services', name: 'Services', component: Services },
-  { path: '/projects', name: 'Projects', component: Projects },
-  { path: '/about', name: 'About', component: About },
+  { path: '/our-services', name: 'Services', component: Services },
+  { path: '/our-projects', name: 'Projects', component: Projects },
+  { path: '/about-us', name: 'About', component: About },
   { path: '/testimonials', name: 'Testimonials', component: Testimonials },
-  { path: '/contact', name: 'Contact', component: Contact },
-
+  { path: '/contact-us', name: 'Contact', component: Contact },
+  
   // Define other static routes
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  // history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),    
   routes,
 });
 

@@ -1,19 +1,27 @@
 <template>
   <div id="app">
-    <header-component></header-component>
-    <!-- <router-view></router-view> -->
+    
+    <!-- <Posts /> -->
+    <!-- <Page /> -->
+    <Header >
+    </Header>
+
     <footer-component></footer-component>
   </div>
+  
 </template>
 
 <script>
-import HeaderComponent from './components/Header.vue';
+import Header from './components/Header.vue';
 import FooterComponent from './components/Footer.vue';
-import AboutComponent from './views/About.vue'
-
+// import Page from './components/Page.vue';
+// import Posts from './components/Posts.vue';
 export default {
   components: {
-    HeaderComponent,
+    // Page,
+    // Posts,
+    Header,
+    
     FooterComponent,
   },
 };
