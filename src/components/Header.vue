@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg center-nav transparent navbar-light bg-white">
       <div class="container flex-lg-row flex-nowrap align-items-center">
         <div class="navbar-brand w-100">
-          <router-link to="/">
+          <router-link to="/home">
             <img src="../assets/img/logo.png" alt="Logo" />
           </router-link>
         </div>
@@ -15,7 +15,7 @@
           <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
             <ul class="navbar-nav">
               <li v-for="item in menuItems" :key="item.id" class="nav-item">
-                <router-link :to="item.url" class="nav-link hover">
+                <router-link :to="`${item.id}`" class="nav-link hover">
                   <div class="menu-item-wrap">
                     <span class="menu-item-title">{{ item.title }}</span>
                   </div>
@@ -25,7 +25,7 @@
             <!-- /.navbar-nav -->
             <div class="offcanvas-footer d-lg-none">
               <div>
-                <router-link to="/contact" class="btn btn-sm btn-primary rounded">Contact Us</router-link>
+                <router-link to="/contact-us" class="btn btn-sm btn-primary rounded">Contact Us</router-link>
                 <br />
                 <nav class="nav social social-white mt-4">
                   <a href="#"><i class="uil uil-twitter"></i></a>
@@ -59,7 +59,6 @@
     </nav>
     <!-- /.navbar -->
   </header>
-  <RouterView></RouterView>
 </template>
 
 <script>

@@ -1,80 +1,72 @@
 <script>
 import { ref, onMounted } from 'vue';
-import { fetchPages } from '../services/apiService';
+import { fetchPageById } from '../services/apiService';
+import { useRoute } from 'vue-router';
+
 
 export default {
   name: 'Home',
   setup() {
-    const pages = ref([]);
-    const loading = ref(true);
-    const error = ref(null);
+    const page = ref(null);
+    const route = useRoute();
 
     onMounted(async () => {
       try {
-        pages.value = await fetchPages();
-      } catch (err) {
-        error.value = 'Failed to load pages';
-      } finally {
-        loading.value = false;
+        page.value = await fetchPageById(route.params.id);
+      } catch (error) {
+        console.error('Failed to fetch page', error);
       }
     });
 
     return {
-      pages,
-      loading,
-      error,
+      page,
     };
   },
+  data() {
+    return {
+      slideInDown: 'some-value', // define the property here
+    }
+  }
 };
 </script>
 
 <template>
-
- 
-
   <div class="content-wrapper">
+    
     <!-- /header -->
     <section class="wrapper bg-soft-primary">
-    <div class="container">
-      <div class="row p-40 align-items-center text-center text-lg-start"  v-for="page in pages" :key="page.id">
-        <!-- <div>
-    <h1>Page Detail</h1>
-    <div v-if="loading">Loading...</div>
-    <div v-if="error">{{ error }}</div>
-    <div v-if="page">
-      <h3>{{ page.title.rendered }}</h3>
-      <div v-html="page.content.rendered"></div>
-    </div>
-  </div> -->
-        <div class="col-lg-6" data-cues="slideInDown" data-group="page-title" data-delay="900">
-          <div class="mb-4 text-primary">{{ page.acf.hero.title }}</div>
+      <div class="container ">
+        
+        <div class="row p-40 align-items-center text-center text-lg-start" v-if="page" :key="page.id">
+
+          <div class="col-lg-6" :data-cues="slideInDown" data-group="page-title" >
+            
+            <div class="mb-4 text-primary" >{{ page.acf.hero.title }}</div>
+            
+            
+            <h1 class="display-1 mb-5 mx-md-10 mx-lg-0" data-cue="slideInDown" data-group="page-title" data-delay="600" data-show="true" style="animation-name: slideInDown; animation-duration: 700ms; animation-timing-function: ease; animation-delay: 600ms; animation-direction: normal; animation-fill-mode: both;">
+              {{ page.acf.hero.heading.fix_heading }}<br> 
+              <span class="typer text-primary text-nowrap" data-delay="100" :data-words="page.acf.hero.heading.rewrite.split(',')" style="color: black;">easy</span>
+              <span class="cursor text-primary" data-owner="typer" style="transition: all 0.1s ease 0s; opacity: 0;">|</span>
+            </h1>
+                
+            <p class="lead fs-24 lh-sm mb-7 pe-xxl-15">{{ page.acf.hero.description }}</p>
+             
+             
+              <div class="d-inline-flex me-2"><a href="#" class="btn btn-lg btn-grape rounded"> Start Your Project </a></div>
           
-          <h1 class="display-1 mb-5 mx-md-10 mx-lg-0" data-cue="slideInDown" data-group="page-title" data-delay="600" data-show="true" style="animation-name: slideInDown; animation-duration: 700ms; animation-timing-function: ease; animation-delay: 600ms; animation-direction: normal; animation-fill-mode: both;">
-            {{ page.acf.hero.heading.fix_heading }} <br>
-            <span class="typer text-primary text-nowrap" data-delay="100" :data-words="page.acf.hero.heading.rewrite.split(',')" style="color: black;">easy</span>
-            <span class="cursor text-primary" data-owner="typer" style="transition: all 0.1s ease 0s; opacity: 0;">|</span>
-          </h1>
-          
-          <p class="lead fs-24 lh-sm mb-7 pe-xxl-15">{{ page.acf.hero.description }}</p>
-          
-          <div class="d-inline-flex me-2">
-            <a href="#" class="btn btn-lg btn-{{ page.acf.hero.button }} rounded"> Start Your Project </a>
           </div>
-          
+          <!--/column -->
+          <div class="col-10 col-md-7 col-lg-6" data-cue="zoomIn" data-show="true" style="animation-name: zoomIn; animation-duration: 1700ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
+            <img class="img-fluid" src="../assets/img/myslider.png" data-cue="fadeIn" data-delay="300" alt="" />
+          </div>
+          <!--/column -->
         </div>
-        <!--/column -->
-        <div class="col-10 col-md-7 col-lg-6" data-cue="zoomIn" data-show="true" style="animation-name: zoomIn; animation-duration: 1700ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
-          <img class="img-fluid" src="../assets/img/myslider.png.png" data-cue="fadeIn" data-delay="300" alt="" />
-        </div>
-        <!--/column -->
+        <!-- /.row -->
       </div>
-      <!-- /.row -->
-    </div>
-    <!-- /.container -->
-    <figure>
-      <img src="../assets/img/cloud.png" alt="">
-    </figure>
-  </section>
+      <!-- /.container -->
+      <figure><img src="../assets/img/clouds.png" alt=""></figure>
+    </section> 
     <!-- /section -->
     <section class="wrapper bg-grey">
       <div class="container pt-3 pb-4 pb-md-4">
@@ -624,9 +616,8 @@ export default {
 </template>
 
 <style scoped>
-.post-card {
-  border: 1px solid #ddd;
-  padding: 16px;
-  margin: 16px 0;
-}
+@import url('../assets/css/grape.css');
+@import url('../assets/css/plugins.css');
+@import url('../assets/css/style.css');
+
 </style>

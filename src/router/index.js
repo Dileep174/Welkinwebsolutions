@@ -9,7 +9,7 @@ import Contact from '../views/Contact.vue';
 
 
 const routes = [
-  { path: '/', name: 'Home', component: Home },
+  { path: '/:id', name: 'Home', component: Home },
   { path: '/our-services', name: 'Services', component: Services },
   { path: '/our-projects', name: 'Projects', component: Projects },
   { path: '/about-us', name: 'About', component: About },
@@ -20,8 +20,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  // history: createWebHistory(process.env.BASE_URL),
-  history: createWebHistory(),    
+  history: createWebHistory(),
   routes,
 });
 
