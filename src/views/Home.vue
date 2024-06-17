@@ -1,14 +1,18 @@
 <script>
-import { ref, onMounted } from 'vue';
+// Home.vue
+import { ref, onMounted, watch } from 'vue';
 import { fetchPageById } from '../services/apiService';
 import { useRoute } from 'vue-router';
-
+import Hero from '../components/Home/Hero.vue';
+import WhatWeDo from '../components/Home/WhatWeDo.vue'
 
 export default {
   name: 'Home',
+  components: { Hero,WhatWeDo },
   setup() {
     const page = ref(null);
     const route = useRoute();
+    const slideInDown = ref('some-value');
 
     onMounted(async () => {
       try {
@@ -18,105 +22,27 @@ export default {
       }
     });
 
+    watch(page, (newPage) => {
+      if (newPage) {
+        // Update the Hero component with the new page data
+      }
+    });
+
     return {
       page,
+      slideInDown,
     };
   },
-  data() {
-    return {
-      slideInDown: 'some-value', // define the property here
-    }
-  }
 };
 </script>
 
 <template>
   <div class="content-wrapper">
-    
+    <Hero v-if="page" :page="page" :slideInDown="slideInDown"/>
     <!-- /header -->
-    <section class="wrapper bg-soft-primary">
-      <div class="container ">
-        
-        <div class="row p-40 align-items-center text-center text-lg-start" v-if="page" :key="page.id">
-
-          <div class="col-lg-6" :data-cues="slideInDown" data-group="page-title" >
-            
-            <div class="mb-4 text-primary" >{{ page.acf.hero.title }}</div>
-            
-            
-            <h1 class="display-1 mb-5 mx-md-10 mx-lg-0" data-cue="slideInDown" data-group="page-title" data-delay="600" data-show="true" style="animation-name: slideInDown; animation-duration: 700ms; animation-timing-function: ease; animation-delay: 600ms; animation-direction: normal; animation-fill-mode: both;">
-              {{ page.acf.hero.heading.fix_heading }}<br> 
-              <span class="typer text-primary text-nowrap" data-delay="100" :data-words="page.acf.hero.heading.rewrite.split(',')" style="color: black;">easy</span>
-              <span class="cursor text-primary" data-owner="typer" style="transition: all 0.1s ease 0s; opacity: 0;">|</span>
-            </h1>
-                
-            <p class="lead fs-24 lh-sm mb-7 pe-xxl-15">{{ page.acf.hero.description }}</p>
-             
-             
-              <div class="d-inline-flex me-2"><a href="#" class="btn btn-lg btn-grape rounded"> Start Your Project </a></div>
-          
-          </div>
-          <!--/column -->
-          <div class="col-10 col-md-7 col-lg-6" data-cue="zoomIn" data-show="true" style="animation-name: zoomIn; animation-duration: 1700ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
-            <img class="img-fluid" src="../assets/img/myslider.png" data-cue="fadeIn" data-delay="300" alt="" />
-          </div>
-          <!--/column -->
-        </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container -->
-      <figure><img src="../assets/img/clouds.png" alt=""></figure>
-    </section> 
+    
     <!-- /section -->
-    <section class="wrapper bg-grey">
-      <div class="container pt-3 pb-4 pb-md-4">
-        <div class="row text-center">
-          <div class="col-md-10 offset-md-1 col-xxl-8 offset-xxl-2">
-            <h2 class="fs-16 text-uppercase text-primary mb-3">What We Do?</h2>
-            <h3 class="display-4 mb-2">Grow Your Business </br>With <span class="text-primary"> Welkin Solutions </span>  </h3>
-            <p class="mb-10"> tempus, lectus risus In' perdiel tellus, sed faucibus ipsum ipsurn nun neque.  </p>
-          </div>
-          <!-- /column -->
-        </div>
-        <!-- /.row -->
-        <div class="row gx-md-8 gy-8 mb-15 mb-md-14 text-center">
-        
-          <!--/column -->
-         
-          <div class="col-md-6 col-lg-4">
-            <div class="mybox">
-              <img src="../assets/img/webdesign.svg" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5 myanimation" alt="" />
-              <h1>Web Design</h1>
-              <p class="mb-2">Twit are excet  Frond, rnatie boy grub it's tell gone to pot MI Mrs nut butts horse play blow </p>
-              <a href="#" class="more hover">Learn More</a>
-            </div>
-          </div>
-          
-          <!--/column -->
-          <div class="col-md-6 col-lg-4 ">
-            <div class="mybox">
-              <img src="../assets/img/webdevelopment.svg" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5 myanimation" alt="" />
-              <h1>Web Development</h1>
-              <p class="mb-2">Twit are excet  Frond, rnatie boy grub it's tell gone to pot MI Mrs nut butts horse play blow </p>
-              <a href="#" class="more hover">Learn More</a>
-            </div>
-          </div>
-          <!--/column -->
-          <div class="col-md-6 col-lg-4">
-            <div class="mybox">
-              <img src="../assets/img/media_marketting.svg" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5 myanimation" alt="" />
-              <h1>Media Marketing</h1>
-              <p class="mb-2"> Twit are excet  Frond, rnatie boy grub it's tell gone to pot MI Mrs nut butts horse play blow </p>
-              <a href="#" class="more hover">Learn More</a>
-            </div>
-          </div>
-          <!--/column -->
-        </div>
-        <!--/.row -->
-
-      </div>
-      <!-- /.container -->
-    </section>
+    <WhatWeDo />
     <!-- /section -->
 
 
