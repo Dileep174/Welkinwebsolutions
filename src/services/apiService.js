@@ -1,22 +1,18 @@
 // src/services/apiService.js
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export const fetchPages = async () => {
-  const response = await axios.get(`${API_BASE_URL}/pages`);
-  return response.data;
-};
-
-export const fetchMenuItems = async () => {
-  const response = await axios.get(`${API_BASE_URL}/pages`);
-  return response.data;
-};
+const api = axios.create({
+  baseURL: API_BASE_URL,
+});
 
 export const fetchPageById = async (id) => {
-  const response = await axios.get(`${API_BASE_URL}/pages/${id}`);
+  const response = await api.get(`/pages/${id}`);
   return response.data;
 };
 
-
-// Add more methods for other endpoints if needed
+export const fetchAllPages = async () => {
+  const response = await api.get('/pages');
+  return response.data;
+};

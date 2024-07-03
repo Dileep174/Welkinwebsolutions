@@ -30,5 +30,7 @@
 
 
 <script>
-
+export default { 
+  name: 'Studies',
+}
 </script>

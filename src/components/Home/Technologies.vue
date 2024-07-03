@@ -83,7 +83,8 @@
 </template>
 
 <script>   
-export default {    
+export default { 
+  name: 'Technologies',
     data() {    
         return {    
             // data properties

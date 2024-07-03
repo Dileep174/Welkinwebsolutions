@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg center-nav transparent navbar-light bg-white">
       <div class="container flex-lg-row flex-nowrap align-items-center">
         <div class="navbar-brand w-100">
-          <router-link to="/home">
+          <router-link to="/">
             <img src="../assets/img/logo.png" alt="Logo" />
           </router-link>
         </div>
@@ -14,13 +14,42 @@
           </div>
           <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
             <ul class="navbar-nav">
-              <li v-for="item in menuItems" :key="item.id" class="nav-item">
-                <router-link :to="`${item.id}`" class="nav-link hover">
+              <li class="nav-item">
+                <router-link to="/" class="nav-link hover">
                   <div class="menu-item-wrap">
-                    <span class="menu-item-title">{{ item.title }}</span>
+                    <span class="menu-item-title">Home</span>
                   </div>
                 </router-link>
               </li>
+              <li class="nav-item">
+                <router-link to="/our-services" class="nav-link hover">
+                  <div class="menu-item-wrap">
+                    <span class="menu-item-title">Our Services</span>
+                  </div>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/our-projects" class="nav-link hover">
+                  <div class="menu-item-wrap">
+                    <span class="menu-item-title">Our Projects</span>
+                  </div>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/about-us" class="nav-link hover">
+                  <div class="menu-item-wrap">
+                    <span class="menu-item-title">About Us</span>
+                  </div>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/Testimonials" class="nav-link hover">
+                  <div class="menu-item-wrap">
+                    <span class="menu-item-title">Testimonials</span>
+                  </div>
+                </router-link>
+              </li> 
+
             </ul>
             <!-- /.navbar-nav -->
             <div class="offcanvas-footer d-lg-none">
@@ -45,13 +74,17 @@
         <div class="navbar-other w-25 d-flex ms-auto">
           <ul class="navbar-nav flex-row align-items-center ms-auto">
             <li class="nav-item d-none d-md-block">
-              <router-link to="/contact" class="btn btn-sm btn-primary rounded">Contact Us</router-link>
+              <router-link to="/contact-us" class="btn btn-sm btn-primary rounded">Contact Us</router-link>
             </li>
             <li class="nav-item d-lg-none">
               <button class="hamburger offcanvas-nav-btn"><span></span></button>
             </li>
           </ul>
           <!-- /.navbar-nav -->
+        </div>
+        
+        <div >
+          <h1></h1>
         </div>
         <!-- /.navbar-other -->
       </div>
@@ -62,31 +95,18 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
-import { fetchMenuItems } from '../services/apiService';
+import Home from '../views/Home.vue';
+import About from '../views/About.vue';
+import Contact from '../views/Contact.vue';
+import Services from '../views/Services.vue';
+import Testimonials from '../views/Testimonials.vue';
+import Projects from '../views/Projects.vue';
+import { mapState } from 'vuex';
 
 export default {
   name: 'Header',
-  setup() {
-    const menuItems = ref([]);
+  components: { Home, Services,  Projects, About, Testimonials, Contact },
 
-    onMounted(async () => {
-      try {
-        const data = await fetchMenuItems();
-        menuItems.value = data.map(item => ({
-          id: item.id,
-          title: item.title.rendered,
-          url: item.slug === 'home' ? '/' : `/${item.slug}`
-        }));
-      } catch (error) {
-        console.error('Failed to fetch menu items', error);
-      }
-    });
-
-    return {
-      menuItems,
-    };
-  },
 };
 </script>
 

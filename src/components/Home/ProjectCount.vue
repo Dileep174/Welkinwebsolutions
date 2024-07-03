@@ -36,4 +36,7 @@
 </template>
 
 <script>
+export default {
+  name: 'ProjectCount'
+  }
 </script>

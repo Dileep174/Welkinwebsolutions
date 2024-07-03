@@ -1,59 +1,46 @@
-<script>
-// Home.vue
-import { computed } from 'vue'
-import { useStore } from 'vuex'
-import Hero from '../components/Home/Hero.vue'
-
-export default {
-  components: { Hero,},
-  setup() {
-    const store = useStore()
-    const sections = computed(() => store.state.sections)
-
-    return {
-      sections
-    }
-  }
-}
-</script>
-
+<!-- src/components/Home.vue -->
 <template>
-  <div class="content-wrapper">
-    <Hero :sections="sections"/>
-    <!-- /header -->
-    
-    <!-- /section -->
-    <!-- <WhatWeDo /> -->
-    <!-- /section -->
-
-
-    <!-- Technologies -->
-    
-    <!-- /section -->
-
-    <!-- Testimonial -->
-    
-    <!-- /section -->
-
-
-    <!-- projectcount -->
-    
-    <!-- /section -->
-
-
-    <!-- Studies -->
-    
-    <!-- /section -->
-
-    <!-- Portfolios -->
-    
-    <!-- /section -->
+  <div>
+    <h1>Home Page</h1>
+    <Hero :page="page"/>
+    <WhatWeDo :page="page"/>
+    <Technologies :page="page"/>
+    <Testimonials :page="page"/>
+    <ProjectCount :page="page"/>
+    <Studies :page="page"/>
+    <Portfolios :page="page"/>
   </div>
-  <!-- /.content-wrapper -->
-
-
   
 </template>
 
-<style scoped>
-</style>
+<script>
+import Hero from '../components/Home/Hero.vue';
+import WhatWeDo from '../components/Home/WhatWeDo.vue'
+import Technologies from '../components/Home/Technologies.vue'
+import Testimonials from '../components/Home/Testimonials.vue'
+import ProjectCount from '../components/Home/ProjectCount.vue'
+import Studies from '../components/Home/Studies.vue'
+import Portfolios from '../components/Home/Portfolios.vue'
+import { onMounted } from 'vue';
+import { useStore } from 'vuex';
+
+export default {
+  name: 'Home',
+  components: {
+    Hero, WhatWeDo, Technologies, Testimonials, ProjectCount, Studies, Portfolios, 
+
+    },
+  setup() {
+    const store = useStore();
+    const pageId = 8;
+
+    onMounted(() => {
+      store.dispatch('fetchPageById', pageId);
+    });
+
+    return {
+      page: store.getters.singlePage,
+    };
+  },
+};
+</script>
