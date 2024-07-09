@@ -10,12 +10,12 @@
         </div>
       </div>
       <div class="row gx-md-8 gy-8 mb-15 mb-md-14 text-center">
-        <div v-for="(service, index) in services" :key="index" class="col-md-6 col-lg-4">
+        <div v-for="item in pages" :key="item.id" class="col-md-6 col-lg-4">
           <div class="mybox">
-            <img :src="service.icon" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5 myanimation" alt="" />
-            <h1>{{ service.title }}</h1>
-            <p class="mb-2">{{ service.description }}</p>
-            <a :href="service.href" class="more hover">Learn More</a>
+            <img :src="item.acf.icon" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5 myanimation" alt="" />
+            <h1>{{ item.acf.title }}</h1>
+            <p class="mb-2">{{ item.acf.description }}</p>
+            <a :href="item.acf.learn_more" class="more hover">Learn More</a>
           </div>
         </div>
       </div>
@@ -24,38 +24,35 @@
 </template>
 
 <script>
+import { onMounted } from 'vue';
+import { useStore } from 'vuex';
 export default {
   name: 'WhatWeDo',
   props: {
     page: Object
   },
-  data() {
+  setup() {
+    const store = useStore();
+
+    onMounted(() => {
+      store.dispatch('fetchPages');
+    });
+
     return {
-      services: []
-    }
+      pages: store.getters.allPages,
+    };
   },
-  mounted() {
-    // Fetch data from API or database
-    this.services = [
-      {
-        title: 'Web Design',
-        description: 'Twit are excet  Frond, rnatie boy grub it\'s tell gone to pot MI Mrs nut butts horse play blow',
-        icon: '../assets/img/webdesign.svg',
-        href: '#'
-      },
-      {
-        title: 'Web Development',
-        description: 'Twit are excet  Frond, rnatie boy grub it\'s tell gone to pot MI Mrs nut butts horse play blow',
-        icon: '../assets/img/webdevelopment.svg',
-        href: '#'
-      },
-      {
-        title: 'Media Marketing',
-        description: 'Twit are excet  Frond, rnatie boy grub it\'s tell gone to pot MI Mrs nut butts horse play blow',
-        icon: '../assets/img/media_marketting.svg',
-        href: '#'
-      }
-    ];
-  }
+
 }
 </script>
+
+<style scoped>
+.icon-svg.icon-svg-md {
+    width: 2rem;
+    height: 2rem;
+}
+
+img.svg-inject {
+    visibility: visible;
+}
+</style>

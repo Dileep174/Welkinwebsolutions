@@ -24,6 +24,7 @@ import Portfolios from '../components/Home/Portfolios.vue'
 import { onMounted } from 'vue';
 import { useStore } from 'vuex';
 
+
 export default {
   name: 'Home',
   components: {

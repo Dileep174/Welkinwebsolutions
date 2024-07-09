@@ -20,8 +20,8 @@
                       <div class="col-md-3 col-lg-3"> <img src="../assets/img/profile.png" alt="" width="50px;"
                           height="50px"> </div>
                       <div class="col-md-9 col-lg-9">
-                        <P style="margin: 0px; padding: 0px;"> <b> Name: </b> Mark Parker </P>
-                        <P style="margin: 0px; padding: 0px;"> CEO of Welkin </P>
+                        <p style="margin: 0px; padding: 0px;"> <b> Name: </b> Mark Parker </p>
+                        <p style="margin: 0px; padding: 0px;"> CEO of Welkin </p>
                       </div>
                       <div class="testimonialcon">Cura bitur susci pit nequeut lacus interd sit amet dictum nunc
                         eleifend. Mauris pulvinar odio at nunc labortis. <a href="#" class="more hover">Learn More</a>
@@ -41,8 +41,8 @@
                       <div class="col-md-3 col-lg-3"> <img src="../assets/img/profile.png" alt="" width="50px;"
                           height="50px"> </div>
                       <div class="col-md-9 col-lg-9">
-                        <P style="margin: 0px; padding: 0px;"> <b> Name: </b> Mark Parker </P>
-                        <P style="margin: 0px; padding: 0px;"> CEO of Welkin </P>
+                        <p style="margin: 0px; padding: 0px;"> <b> Name: </b> Mark Parker </p>
+                        <p style="margin: 0px; padding: 0px;"> CEO of Welkin </p>
                       </div>
                       <div class="testimonialcon">Cura bitur susci pit nequeut lacus interd sit amet dictum nunc
                         eleifend. Mauris pulvinar odio at nunc labortis. <a href="#" class="more hover">Learn More</a>
@@ -68,8 +68,8 @@
                       <div class="col-md-3 col-lg-3"> <img src="../assets/img/profile.png" alt="" width="50px;"
                           height="50px"> </div>
                       <div class="col-md-9 col-lg-9">
-                        <P style="margin: 0px; padding: 0px;"> <b> Name: </b> Balram Parker </P>
-                        <P style="margin: 0px; padding: 0px;"> CEO of Welkin </P>
+                        <p style="margin: 0px; padding: 0px;"> <b> Name: </b> Balram Parker </p>
+                        <p style="margin: 0px; padding: 0px;"> CEO of Welkin </p>
                       </div>
                       <div class="testimonialcon">Cura bitur susci pit nequeut lacus interd sit amet dictum nunc
                         eleifend. Mauris pulvinar odio at nunc labortis. <a href="#" class="more hover">Learn More</a>
