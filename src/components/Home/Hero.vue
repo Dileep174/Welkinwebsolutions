@@ -26,28 +26,17 @@
       <!-- /.container -->
       <figure><img src="../../assets/img/clouds.png" alt=""></figure>
     </section>
+    
 </template>
 
 <script>
 export default {
   name: 'Hero',
-  // props: {
-  //   page: Object
-  // },
-  // data() {
-  //   return {
-  //     animationCues: 'lideInDown',
-  //     animationCue: 'lideInDown',
-  //     animationStyle: {
-  //       animationName: 'lideInDown',
-  //       animationDuration: '700ms',
-  //       animationTimingFunction: 'ease',
-  //       animationDelay: '600ms',
-  //       animationDirection: 'normal',
-  //       animationFillMode: 'both'
-  //     },
-  //     wordsArray: ['Wordpress Development', 'Custome Development', 'Website Design', 'Dgital Marketing', 'Logo Design']
-  //   }
-  // }
+  props: {
+    page: {
+      type: Object,
+      required: true,
+    },
+  }
 };
 </script>

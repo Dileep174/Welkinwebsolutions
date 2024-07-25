@@ -10,56 +10,56 @@
               <div class="swiper">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
-               <img src="../assets/img/wp.png" style="width: 153px; height:35px"> 
+               <img src="../../assets/img/wp.png" style="width: 153px; height:35px"> 
                   </div>
                   <!--/.swiper-slide -->
                   <div class="swiper-slide">
-                    <img src="../assets/img/shpyfy.png" style="width: 153px; height:35px"> 
+                    <img src="../../assets/img/shpyfy.png" style="width: 153px; height:35px"> 
                   </div>
                   <!--/.swiper-slide -->
                   <div class="swiper-slide">
-                    <img src="../assets/img/php1.png" style="width: 153px; height:35px"> 
+                    <img src="../../assets/img/php1.png" style="width: 153px; height:35px"> 
                   </div>
                   <!--/.swiper-slide -->
                   <div class="swiper-slide">
-                    <img src="../assets/img/larave.png" style="width: 153px; height:35px"> 
+                    <img src="../../assets/img/larave.png" style="width: 153px; height:35px"> 
                   </div>
                   <!--/.swiper-slide -->
                   <div class="swiper-slide">
-                    <img src="../assets/img/codeigniter.png" style="width: 153px; height:35px"> 
+                    <img src="../../assets/img/codeigniter.png" style="width: 153px; height:35px"> 
                   </div>
                   <!--/.swiper-slide -->
         
                     <!--/.swiper-slide -->
                     <div class="swiper-slide">
-                      <img src="../assets/img/clickfunnel 1.png" style="width: 153px; height:35px"> 
+                      <img src="../../assets/img/clickfunnel 1.png" style="width: 153px; height:35px"> 
                     </div>
                     <!--/.swiper-slide -->
         
                     <div class="swiper-slide">
-                      <img src="../assets/img/wp.png" style="width: 153px; height:35px"> 
+                      <img src="../../assets/img/wp.png" style="width: 153px; height:35px"> 
                          </div>
                          <!--/.swiper-slide -->
                          <div class="swiper-slide">
-                           <img src="../assets/img/shpyfy.png" style="width: 153px; height:35px"> 
+                           <img src="../../assets/img/shpyfy.png" style="width: 153px; height:35px"> 
                          </div>
                          <!--/.swiper-slide -->
                          <div class="swiper-slide">
-                           <img src="../assets/img/php1.png" style="width: 153px; height:35px"> 
+                           <img src="../../assets/img/php1.png" style="width: 153px; height:35px"> 
                          </div>
                          <!--/.swiper-slide -->
                          <div class="swiper-slide">
-                           <img src="../assets/img/larave.png" style="width: 153px; height:35px"> 
+                           <img src="../../assets/img/larave.png" style="width: 153px; height:35px"> 
                          </div>
                          <!--/.swiper-slide -->
                          <div class="swiper-slide">
-                           <img src="../assets/img/codeigniter.png" style="width: 153px; height:35px"> 
+                           <img src="../../assets/img/codeigniter.png" style="width: 153px; height:35px"> 
                          </div>
                          <!--/.swiper-slide -->
          
                            <!--/.swiper-slide -->
                            <div class="swiper-slide">
-                             <img src="../assets/img/clickfunnel 1.png" style="width: 153px; height:35px"> 
+                             <img src="../../assets/img/clickfunnel 1.png" style="width: 153px; height:35px"> 
                            </div>
                            <!--/.swiper-slide -->
         

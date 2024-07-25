@@ -1,5 +1,5 @@
 <template>
-<footer class="bg-footer text-inverse">
+  <footer class="bg-footer text-inverse">
     <div class="container py-6 py-md-6">
       <div class="row gy-3 gy-lg-0">
         <div class="col-md-4 col-lg-3">
@@ -94,7 +94,16 @@
     </div>
     <!-- /.container -->
   </footer>
+
+  <!-- <div class="progress-wrap">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+    </svg>
+  </div> -->
 </template>
 
 <script>
+export default {
+  name: 'Footer',
+}
 </script>

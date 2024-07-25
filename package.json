@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@iconfu/svg-inject": "^0.4.1",
     "axios": "^1.7.2",
     "bootstrap-vue-next": "^0.23.1",
     "cors": "^2.8.5",

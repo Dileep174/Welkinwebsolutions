@@ -1,7 +1,6 @@
 <!-- src/components/Home.vue -->
 <template>
   <div>
-    <h1>Home Page</h1>
     <Hero :page="page"/>
     <WhatWeDo :page="page"/>
     <Technologies :page="page"/>
@@ -10,7 +9,6 @@
     <Studies :page="page"/>
     <Portfolios :page="page"/>
   </div>
-  
 </template>
 
 <script>
@@ -37,6 +35,8 @@ export default {
 
     onMounted(() => {
       store.dispatch('fetchPageById', pageId);
+      theme.init();
+      TyperSetup();
     });
 
     return {

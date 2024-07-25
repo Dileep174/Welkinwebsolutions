@@ -1,18 +1,29 @@
 <template>
-  <div>
     <Header></Header>
-    <router-view />
+  
+  <router-view />
+    <Footer></Footer>
+    <div class="progress-wrap">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+    </svg>
+    
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
-
+import Footer from './components/Footer.vue'
 export default {
   name: 'App',
   components: {
-    Header
-  }
+    Header, Footer
+    },
+  mounted() {
+    // Use the plugin
+    theme.init();
+      TyperSetup();
+  },
 }
 </script>
 

@@ -1,9 +1,9 @@
 <template>
-  <div v-if="page">
+  <!-- <div v-if="page">
     <h1>{{ page.title.rendered }}</h1> 
     <div v-html="page.content.rendered"></div>
     <h2>{{ page.acf.grow_business.title }}</h2>
-  </div>
+  </div> -->
     <section class="wrapper Background2">
       <div class="container-fluid px-md-6 pt-3 pb-4 pb-md-4">
         <div class="row text-center pb-7">
@@ -125,8 +125,8 @@
 <script>
 export default {
   name: 'Portfolios',
-  props: {
-    page: Object
-  }
+  // props: {
+  //   page: Object
+  // }
 }
 </script>

@@ -101,7 +101,7 @@ import Contact from '../views/Contact.vue';
 import Services from '../views/Services.vue';
 import Testimonials from '../views/Testimonials.vue';
 import Projects from '../views/Projects.vue';
-import { mapState } from 'vuex';
+// import { mapState } from 'vuex';
 
 export default {
   name: 'Header',
