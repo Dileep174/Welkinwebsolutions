@@ -14,42 +14,13 @@
           </div>
           <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <router-link to="/" class="nav-link hover">
+              <li v-for="(menuItem, index) in menuItems" :key="index" class="nav-item">
+                <router-link :to="menuItem.path" class="nav-link hover">
                   <div class="menu-item-wrap">
-                    <span class="menu-item-title">Home</span>
+                    <span class="menu-item-title">{{ menuItem.title }}</span>
                   </div>
                 </router-link>
               </li>
-              <li class="nav-item">
-                <router-link to="/our-services" class="nav-link hover">
-                  <div class="menu-item-wrap">
-                    <span class="menu-item-title">Our Services</span>
-                  </div>
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link to="/our-projects" class="nav-link hover">
-                  <div class="menu-item-wrap">
-                    <span class="menu-item-title">Our Projects</span>
-                  </div>
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link to="/about-us" class="nav-link hover">
-                  <div class="menu-item-wrap">
-                    <span class="menu-item-title">About Us</span>
-                  </div>
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link to="/Testimonials" class="nav-link hover">
-                  <div class="menu-item-wrap">
-                    <span class="menu-item-title">Testimonials</span>
-                  </div>
-                </router-link>
-              </li> 
-
             </ul>
             <!-- /.navbar-nav -->
             <div class="offcanvas-footer d-lg-none">
@@ -57,11 +28,9 @@
                 <router-link to="/contact-us" class="btn btn-sm btn-primary rounded">Contact Us</router-link>
                 <br />
                 <nav class="nav social social-white mt-4">
-                  <a href="#"><i class="uil uil-twitter"></i></a>
-                  <a href="#"><i class="uil uil-facebook-f"></i></a>
-                  <a href="#"><i class="uil uil-dribbble"></i></a>
-                  <a href="#"><i class="uil uil-instagram"></i></a>
-                  <a href="#"><i class="uil uil-youtube"></i></a>
+                  <a v-for="(socialLink, index) in socialLinks" :key="index" :href="socialLink.href">
+                    <i :class="socialLink.icon"></i>
+                  </a>
                 </nav>
                 <!-- /.social -->
               </div>
@@ -82,10 +51,6 @@
           </ul>
           <!-- /.navbar-nav -->
         </div>
-        
-        <div >
-          <h1></h1>
-        </div>
         <!-- /.navbar-other -->
       </div>
       <!-- /.container -->
@@ -93,7 +58,6 @@
     <!-- /.navbar -->
   </header>
 </template>
-
 <script>
 import Home from '../views/Home.vue';
 import About from '../views/About.vue';
@@ -105,11 +69,24 @@ import Projects from '../views/Projects.vue';
 
 export default {
   name: 'Header',
+data() {
+    return {
+      menuItems: [
+        { title: 'Home', path: '/' },
+        { title: 'Our Services', path: '/our-services' },
+        { title: 'Our Projects', path: '/our-projects' },
+        { title: 'About Us', path: '/about-us' },
+        { title: 'Testimonials', path: '/testimonials' }
+      ],
+      socialLinks: [
+        { href: '#', icon: 'uil uil-twitter' },
+        { href: '#', icon: 'uil uil-facebook-f' },
+        { href: '#', icon: 'uil uil-dribbble' },
+        { href: '#', icon: 'uil uil-instagram' },
+        { href: '#', icon: 'uil uil-youtube' }
+      ]
+    }
+  },
   components: { Home, Services,  Projects, About, Testimonials, Contact },
-
 };
 </script>
-
-<style scoped>
-/* Add your styles here */
-</style>

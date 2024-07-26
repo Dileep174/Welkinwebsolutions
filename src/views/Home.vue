@@ -22,26 +22,24 @@ import Portfolios from '../components/Home/Portfolios.vue'
 import { onMounted } from 'vue';
 import { useStore } from 'vuex';
 
-
 export default {
   name: 'Home',
-  components: {
-    Hero, WhatWeDo, Technologies, Testimonials, ProjectCount, Studies, Portfolios, 
-
-    },
   setup() {
-    const store = useStore();
-    const pageId = 8;
+    const store = useStore()
+    const pageId = 8
 
     onMounted(() => {
-      store.dispatch('fetchPageById', pageId);
-      theme.init();
-      TyperSetup();
-    });
+      store.dispatch('fetchPageById', pageId)
+      theme.init()
+      TyperSetup()
+    })
 
     return {
       page: store.getters.singlePage,
-    };
+    }
   },
+  components: {
+    Hero, WhatWeDo, Technologies, Testimonials, ProjectCount, Studies, Portfolios, 
+    },
 };
 </script>

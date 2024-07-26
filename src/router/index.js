@@ -7,7 +7,6 @@ import About from '../views/About.vue';
 import Testimonials from '../views/Testimonials.vue'
 import Contact from '../views/Contact.vue';
 import Hero from '../components/Home/Hero.vue'
-// import Header from '../components/Header.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
@@ -16,12 +15,7 @@ const routes = [
   { path: '/about-us', name: 'About', component: About },
   { path: '/testimonials', name: 'Testimonials', component: Testimonials },
   { path: '/contact-us', name: 'Contact', component: Contact },
-  { path: '/hero/:id', name: 'Hero', component: Hero, },
-  // { path: '/Header', name: 'Header', component: Header },
-
-  // { path: '/Hero/:id', name: 'Hero', component: Hero },
-
-  // Define other static routes
+  { path: '/hero', name: 'Hero', component: Hero, },
 ];
 
 const router = createRouter({
