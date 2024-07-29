@@ -9,6 +9,7 @@
           <p class="mb-10">{{ page.acf.grow_business.description }}</p>
         </div>
       </div>
+      <div v-else>data not availble.</div>
       <div class="row gx-md-8 gy-8 mb-15 mb-md-14 text-center">
         <div v-for="item in pages" :key="item.id" class="col-md-6 col-lg-4">
           <div class="mybox">
@@ -36,18 +37,18 @@ export default {
 
     onMounted(() => {
       store.dispatch('fetchPages');
+
     });
+    
 
     return {
       pages: store.getters.allPages,
     };
   },
-  mounted() {
-    // Use the plugin
-    theme.init();
-      TyperSetup();
-  },
-
+mounted() {
+  theme.init();
+  TyperSetup();
+}
 }
 </script>
 

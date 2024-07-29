@@ -20,10 +20,12 @@ export default {
     Header, Footer
     },
     
-    mounted() {
-    theme.init();
-      TyperSetup();
-  },
+  //   mounted() {
+  //   theme.init();
+  //     TyperSetup();
+  // },
+
+
 }
 
 </script>

@@ -13,6 +13,6 @@ export const fetchPageById = async (id) => {
 };
 
 export const fetchAllPages = async () => {
-  const response = await api.get('/pages');
+  const response = await api.get('/service');
   return response.data;
 };
