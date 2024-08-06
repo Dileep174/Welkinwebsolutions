@@ -86,9 +86,8 @@
 <script>
 export default {
   name: 'Technologies',
-      mounted() {
-    theme.init();
-      TyperSetup();
-  },
+  // mounted() {
+  //   theme.init();
+  // },
 }
 </script>
