@@ -1,6 +1,6 @@
 <template>
   <Hero>
-    <template #projects="{ projectCount, title, description, buttonText }">
+    <template #projects="{ projectCount, title, description, buttonText, projects, cloudsImage }">
       <section class="wrapper bg-soft-primary">
         <div class="container">
           <div class="row p-50">
@@ -15,7 +15,7 @@
             <!--/column -->
             <div class="col-md-6" data-cue="zoomIn" data-show="true"
               style="animation-name: zoomIn; animation-duration: 1700ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
-              <img class="img-fluid" :src="image" data-cue="fadeIn" data-delay="300" alt="" />
+              <img class="img-fluid" :src="projects" data-cue="fadeIn" data-delay="300" alt="" />
             </div>
             <!--/column -->
           </div>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import Hero from '../components/Home/Hero.vue'
+import Hero from '../components/child/Hero.vue'
 export default {
   name: 'Projects',
   components: { Hero },

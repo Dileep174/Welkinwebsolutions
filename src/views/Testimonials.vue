@@ -1,6 +1,6 @@
 <template>
     <Hero>
-        <template #testimonial="{ subTitle, title, typerText, description, buttonText }">
+        <template #testimonial="{ subTitle, title, typerText, description, buttonText, testimonial, cloudsImage }">
             <section class="wrapper bg-soft-primary">
                 <div class="container">
                     <div class="row align-items-center text-center text-lg-start">
@@ -16,13 +16,14 @@
                             </h1>
                             <p class="lead fs-24 lh-sm mb-7 pe-xxl-15">{{ description }}</p>
                             <div class="d-inline-flex me-2">
-                                <router-link to="/our-projects" class="btn btn-lg btn-grape rounded">{{ buttonText }}</router-link>
+                                <router-link to="/our-projects" class="btn btn-lg btn-grape rounded">{{ buttonText
+                                    }}</router-link>
                             </div>
                         </div>
                         <!--/column -->
                         <div class="col-12 pt-4 col-md-7 col-lg-6 text-center" data-cue="zoomIn" data-show="true"
                             style="animation-name: zoomIn; animation-duration: 1700ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
-                            <img class="img-fluid" :src="image" data-cue="fadeIn" data-delay="300" alt="" />
+                            <img class="img-fluid" :src="testimonial" data-cue="fadeIn" data-delay="300" alt="" />
                         </div>
                         <!--/column -->
                     </div>
@@ -33,14 +34,47 @@
             </section>
         </template>
     </Hero>
+    <Cards>
+        <template #testimonial="{ title, subTitle, image1, image2 }">
+            <section class="wrapper bg-grey">
+                <div class="container pt-3 pb-4 pb-md-4">
+                    <div class="row text-center">
+                        <div class="col-md-12">
+                            <h3 class="display-4 mb-2">{{ title }} <span class="text-primary">{{ subTitle }}</span></h3>
+                            <hr>
+                        </div> <!-- /column -->
+                    </div> <!-- /.row -->
+                    <div class="row">
+                        <div class="col-md-2"> </div>
+                        <div class="col-md-4"> <img :src="image1" class="img-fluid"> </div>
+                        <!--/column -->
+                        <div class="col-md-4"> <img :src="image2" class="img-fluid"> </div>
+                        <div class="col-md-2"> </div>
+                        <!--/column -->
+                    </div>
+                    <!--/.row -->
+                    <div class="row mt-5 mb-14">
+                        <div class="col-md-2"> </div>
+                        <div class="col-md-4"> <img :src="image1" class="img-fluid"> </div>
+                        <!--/column -->
+                        <div class="col-md-4"> <img :src="image2" class="img-fluid"> </div>
+                        <div class="col-md-2"> </div>
+                        <!--/column -->
+                    </div>
+                    <!--/.row -->
+                </div> <!-- /.container -->
+            </section> <!-- /section -->
+        </template>
+    </Cards>
 </template>
 
 <script>
-import Hero from '../components/Home/Hero.vue'
+import Hero from '../components/child/Hero.vue'
+import Cards from '../components/child/Cards.vue'
 export default {
     name: 'Testimonials',
     components: {
-        Hero
+        Hero, Cards
     }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <Hero>
-    <template #about="{subTitle, title, typerText, description, buttonText}">
+    <template #about="{subTitle, title, typerText, description, buttonText, about, cloudsImage}">
       <section class="wrapper bg-soft-primary">
     <div class="container pt-5 pt-lg-6 pt-xl-6 pt-xxl-5 pb-lg-5 pb-xl-5 pb-xxl-0">
       <div class="row gx-md-8 gx-xl-12 gy-10 pt-8 pb-10 align-items-center text-center text-lg-start">
@@ -18,7 +18,7 @@
         </div>
         <!--/column -->
         <div class="col-10 col-md-7 col-lg-6" data-cue="zoomIn" data-show="true" style="animation-name: zoomIn; animation-duration: 1700ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
-          <img class="img-fluid" :src="image" data-cue="fadeIn" data-delay="300" alt="" />
+          <img class="img-fluid" :src="about" data-cue="fadeIn" data-delay="300" alt="" />
         </div>
         <!--/column -->
       </div>
@@ -32,7 +32,7 @@
   </template>
   
   <script>
-  import Hero from '../components/Home/Hero.vue'
+  import Hero from '../components/child/Hero.vue'
   export default {  
     name: "About",  
     components: {

@@ -6,7 +6,7 @@ import Projects from '../views/Projects.vue';
 import About from '../views/About.vue';
 import Testimonials from '../views/Testimonials.vue'
 import Contact from '../views/Contact.vue';
-import Hero from '../components/Home/Hero.vue'
+import Hero from '../components/child/Hero.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: Home },

@@ -1,6 +1,6 @@
 <template>
   <slot name="home" v-bind="hero">
-    <img src="../../assets/img/myslider.png" alt="">
+    <!-- <img :src="cloudsImages" alt=""> -->
   </slot>
   <slot name="services" v-bind="services">
   </slot>
@@ -15,6 +15,13 @@
 </template>
 
 <script>
+import mySlider from "../../assets/img/myslider.png";
+import cloudsImage from "../../assets/img/clouds.png";
+import services from "../../assets/img/about.png";
+import projects from "../../assets/img/project_header.png";
+import about from "../../assets/img/about.png";
+import testimonial from "../../assets/img/testimonial_banner.png";
+
 export default {
   name: 'Hero',
   data() {
@@ -23,8 +30,8 @@ export default {
         subTitle: 'AWARD WINNING COMPANY',
         title: 'We Are The Best in',
         description: 'You need to get positive results when you spend hard <br class="d-none d-md-block d-lg-none" /> earned revenue and time on any marketing effort. Great returns on marketing and promotions.',
-        image: '../../assets/img/myslider.png',
-        cloudsImage: '../../assets/img/clouds.png'
+        mySlider: mySlider,
+        cloudsImage: cloudsImage
       },
       services: {
         subTitle: 'Normal Rate, Best Service',
@@ -32,16 +39,16 @@ export default {
         typerText: 'easy',
         description: 'You need to get positive results when you spend hard earned revenue and time on any marketing effort. Great returns on marketing and promotions.',
         buttonText: 'Start Your Project',
-        image: 'img/about.png',
-        cloudsImage: 'img/clouds.png'
+        services: services,
+        cloudsImage: cloudsImage
       },
       projects: {
         projectCount: '2514 Total Projects completed',
         title: 'Impressive portfolios Work',
         description: 'You need to get positive results when you spend hard earned revenue and time on any marketing effort. Great returns on marketing and promotions.',
         buttonText: 'Start Your Project',
-        image: 'img/project_header.png',
-        cloudsImage: 'img/clouds.png'
+        projects: projects,
+        cloudsImage: cloudsImage
       },
       about: {
         subTitle: 'Design, Development & Digital Marketing',
@@ -49,8 +56,8 @@ export default {
         typerText: 'easy',
         description: 'You need to get positive results when you spend hard earned revenue and time on any marketing effort. Great returns on marketing and promotions.',
         buttonText: 'Start Your Project',
-        image: 'img/about-header.png',
-        cloudsImage: 'img/clouds.png'
+        about: about,
+        cloudsImage: cloudsImage
       },
       testimonial: {
         subTitle: 'Repeat business is the best testimonial you’ll ever get.',
@@ -58,8 +65,8 @@ export default {
         typerText: 'easy',
         description: 'You need to get positive results when you spend hard earned revenue and time on any marketing effort. Great returns on marketing and promotions.',
         buttonText: 'Start Your Project',
-        image: 'img/testimonial_banner.png',
-        cloudsImage: 'img/clouds.png'
+        testimonial: testimonial,
+        cloudsImage: cloudsImage
       }
 
     }
