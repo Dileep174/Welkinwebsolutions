@@ -91,7 +91,7 @@
                       <div class="d-flex flex-row">
                         <div>
                           <span class="icon btn btn-circle btn-lg btn-soft-primary pe-none me-4"><span class="number">{{
-                              serv.number }}</span></span>
+      serv.number }}</span></span>
                         </div>
                         <div>
                           <p class="mb-0">{{ serv.description }}</p>
@@ -111,40 +111,60 @@
       </section>
     </template>
   </Cards>
-  <Technologies>
-  <template #home="{technologiesTitle, technologies,}">
-  <section class="wrapper bg-soft-primary">
-    <div class="container py-44 py-md-4">
-      <div class="row mb-2 mt-2">
-        <div class="col-lg-12 mx-auto text-center">
-          <h3 class="py-10 display-4"> {{ technologiesTitle }} </h3>
+  <Slider>
+    <template #home="{ technologiesTitle, technologies, }">
+      <section class="wrapper bg-soft-primary">
+        <div class="container py-44 py-md-4">
+          <div class="row mb-2 mt-2">
+            <div class="col-lg-12 mx-auto text-center">
+              <h3 class="py-10 display-4"> {{ technologiesTitle }} </h3>
 
-          <div class="swiper-container mb-10" data-margin="30" data-nav="true" data-dots="false" data-items-xl="6"
-            data-items-md="2" data-items-xs="1">
-            <div class="swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="(technology, index) in technologies" :key="index">
-                  <img :src="technology.image" style="width: 153px; height:35px">
+              <div class="swiper-container mb-10" data-margin="30" data-nav="true" data-dots="false" data-items-xl="6"
+                data-items-md="2" data-items-xs="1">
+                <div class="swiper">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="(technology, index) in technologies" :key="index">
+                      <img :src="technology.image" style="width: 153px; height:35px">
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-    </div>
-    <figure><img :src="culyImage" alt=""></figure>
-  </section>
-</template>
-</Technologies>
+        </div>
+        <figure><img :src="culyImage" alt=""></figure>
+      </section>
+    </template>
+  </Slider>
+  <Info>
+    <template #services="{ missionTitle, missionSubtitle, missionDescription, contactUsButtonText, missionImage }">
+      <section class="wrapper bg-white">
+        <div class="container">
+          <div class="row py-10 p-50">
+            <div class="col-md-12 col-lg-6">
+              <h2 class="text-uppercase text-primary line-high">{{ missionTitle }}</h2>
+              <h3 class="display-3 mb-4">{{ missionSubtitle }}</h3>
+              <p class="mb-2">{{ missionDescription }}</p>
+              <a href="#" class="btn btn-lg btn-grape rounded">{{ contactUsButtonText }}</a>
+            </div>
+            <div class="col-md-12 col-lg-6">
+              <img :src="missionImage" alt="" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </section>
+    </template>
+  </Info>
 </template>
 
 <script>
 import Hero from '../components/child/Hero.vue'
 import Cards from '../components/child/Cards.vue'
-import Technologies from '../components/child/Technologies.vue'
+import Slider from '../components/child/Slider.vue'
+import Info from '../components/child/Info.vue'
 export default {
   name: 'Services',
-  components: { Hero, Cards, Technologies },
+  components: { Hero, Cards, Slider, Info },
 }
 </script>

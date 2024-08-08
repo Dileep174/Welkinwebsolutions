@@ -63,7 +63,7 @@ export default {
   mounted() {
     // TyperSetup();
     // theme.init();
-    theme.init();
+    theme;
   },
 }
 </script>

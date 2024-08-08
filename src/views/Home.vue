@@ -68,7 +68,7 @@
       </section>
     </template>
   </Cards>
-<Technologies>
+<Slider>
   <template #home="{technologiesTitle, technologies,}">
   <section class="wrapper bg-soft-primary">
     <div class="container py-44 py-md-4">
@@ -93,14 +93,14 @@
     <figure><img :src="culyImage" alt=""></figure>
   </section>
 </template>
-</Technologies>
+</Slider>
 
 </template>
 
 <script>
 import Hero from '../components/child/Hero.vue'
 import Cards from '../components/child/Cards.vue'
-import Technologies from '../components/child/Technologies.vue'
+import Slider from '../components/child/Slider.vue'
 import Testimonials from '../components/child/Testimonials.vue'
 import ProjectCount from '../components/child/ProjectCount.vue'
 import Studies from '../components/child/Studies.vue'
@@ -108,9 +108,9 @@ import Portfolios from '../components/child/Portfolios.vue'
 
 export default {
   name: 'Home',
-
+ 
   components: {
-    Hero, Cards, Technologies, Testimonials, ProjectCount, Studies, Portfolios,
+    Hero, Cards, Slider, Testimonials, ProjectCount, Studies, Portfolios,
   },
 };
 </script>

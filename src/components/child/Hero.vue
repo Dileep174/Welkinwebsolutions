@@ -68,6 +68,7 @@ export default {
         testimonial: testimonial,
         cloudsImage: cloudsImage
       }
+      
 
     }
   },
