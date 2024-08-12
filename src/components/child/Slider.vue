@@ -10,7 +10,7 @@ import php1 from '../../assets/img/php1.png'
 import larave from '../../assets/img/larave.png'
 import code from '../../assets/img/codeigniter.png'
 import click from '../../assets/img/clickfunnel 1.png'
-import white from '../../assets/img/whiteculy.svg'
+import culy from '../../assets/img/whiteculy.svg'
 
 export default {
   name: 'Technologies',
@@ -56,7 +56,7 @@ export default {
             image: click
           },
         ],
-        culyImage: white
+        culyImage: culy
       }
     }
   },

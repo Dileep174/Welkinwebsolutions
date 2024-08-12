@@ -1,7 +1,5 @@
 <template>
-<div>
-    <h1>contact section</h1>
-</div>
+    <div class="content-wrapper"></div>
 </template>
 
 <script>
