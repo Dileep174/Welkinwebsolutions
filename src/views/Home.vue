@@ -95,6 +95,10 @@
         </section>
       </template>
     </Slider>
+    <clients>
+
+    </clients>
+    <counter></counter>
   </div>
 </template>
 
@@ -102,6 +106,8 @@
 import Hero from '../components/child/Hero.vue'
 import Cards from '../components/child/Cards.vue'
 import Slider from '../components/child/Slider.vue'
+import clients from '../components/child/clients.vue'
+import counter from '../components/child/counter.vue'
 import Testimonials from '../components/child/Testimonials.vue'
 import ProjectCount from '../components/child/ProjectCount.vue'
 import Studies from '../components/child/Studies.vue'
@@ -111,7 +117,7 @@ export default {
   name: 'Home',
 
   components: {
-    Hero, Cards, Slider, Testimonials, ProjectCount, Studies, Portfolios,
+    Hero, Cards, Slider, clients, counter, Testimonials, ProjectCount, Studies, Portfolios,
   },
 };
 </script>

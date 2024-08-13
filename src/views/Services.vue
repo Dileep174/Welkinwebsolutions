@@ -159,8 +159,10 @@
       </template>
     </Info>
 
-<Form >this is form</Form>
-
+<Form ></Form>
+    <!-- <div v-for="page in pages" :key="page.id">
+      <h1>{{ page.title.rendered }}</h1>
+    </div> -->
   </div>
 </template>
 
@@ -170,8 +172,18 @@ import Cards from '../components/child/Cards.vue'
 import Slider from '../components/child/Slider.vue'
 import Info from '../components/child/Info.vue'
 import Form from '../components/child/Form.vue'
+import { mapState } from 'vuex';
+
 export default {
   name: 'Services',
+
+  computed: {
+    ...mapState('data', ['pages'])
+  },
+  mounted() {
+    this.$store.dispatch('data/fetchPages');
+  },
+
   components: { Hero, Cards, Slider, Info, Form },
 }
 </script>
