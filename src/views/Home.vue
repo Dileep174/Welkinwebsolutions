@@ -39,6 +39,7 @@
         </section>
       </template>
     </Hero>
+
     <Cards>
       <template #home="{ subTitle, title, companyName, description, services }">
         <section class="wrapper bg-grey">
@@ -69,6 +70,7 @@
         </section>
       </template>
     </Cards>
+
     <Slider>
       <template #home="{ technologiesTitle, technologies, culyImage }">
         <section class="wrapper bg-soft-primary">
@@ -95,10 +97,85 @@
         </section>
       </template>
     </Slider>
-    <clients>
 
+    <clients>
     </clients>
-    <counter></counter>
+
+    <counter>
+    </counter>
+
+    <Info>
+      <template #home="{ description, buttonText, buttonClass, handleClick }">
+        <section class="wrapper Background1">
+          <div class="container pt-5 pt-lg-6 pt-xl-6 pt-xxl-5 pb-lg-5 pb-xl-5 pb-xxl-0">
+            <div class="row gx-md-8 gx-xl-12 gy-10 align-items-center text-center text-lg-start">
+              <div class="col-lg-6" data-cues="slideInDown" data-group="page-title" data-delay="900">
+                <div class="display-12 mb-10 text-primary">Case 143 Studies </div>
+                <h3 class="display-3 mb-4 me-xl-5 mt-lg-n10">Case <br class="d-none d-md-block d-lg-none" /> <span
+                    class="text-primary"> Studies </span></h3>
+                <p class="lead fs-24 lh-sm mb-7 pe-xxl-15">{{ description }}</p>
+                <div class="d-inline-flex me-2">
+                  <button :class="buttonClass" @click="handleClick">
+                    {{ buttonText }}
+                  </button>
+                </div>
+              </div>
+              <!--/column -->
+              <div class="col-10 col-md-7 col-lg-6">
+                <img class="img-fluid" src="../assets/img/casestudy.png" data-cue="fadeIn" data-delay="300" alt="" />
+              </div>
+              <!--/column -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container -->
+          <figure><img src="../assets/img/clouds.png" alt=""></figure>
+        </section>
+      </template>
+    </Info>
+<Portfolios>
+  <template #home="{images,  swiperMargin, swiperItemsXxl,  swiperItemsMd, swiperItemsXs}">
+  <section class="wrapper Background2">
+    <div class="container-fluid px-md-6 pt-3 pb-4 pb-md-4">
+      <div class="row text-center pb-7">
+        <div class="col-md-10 offset-md-1 col-xxl-8 offset-xxl-2">
+          <h3 class="display-4 mb-2"> Our <span class="text-primary"> Portfolios </span> </h3>
+        </div>
+      </div>
+      <div class="row mx-auto text-center pb-md-4">
+        <div class="swiper-container blog grid-view mb-14 mb-md-14 swiper-container-0" :data-margin="swiperMargin" data-nav="false" data-dots="true" :data-items-xxl="swiperItemsXxl" :data-items-md="swiperItemsMd" :data-items-xs="swiperItemsXs">
+          <div class="swiper-wrapper" id="swiper-wrapper-62e6c2b91d356846" aria-live="off">
+            <div v-for="(image, index) in images" :key="index" class="swiper-slide" role="group" :aria-label="` ${index + 1} / ${images.length}`">
+              <figure class="itooltip itooltip-light hover-scale rounded">
+                <a :href="image.src" data-glightbox="" data-gallery="project-1">
+                  <img :src="image.src" alt="">
+                </a>
+              </figure>
+            </div>
+          </div>
+          <!--/.swiper-wrapper -->
+          <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>
+        <!-- /.swiper -->
+        <div class="swiper-controls">
+          <div class="swiper-navigation">
+            <div class="swiper-button swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-62e6c2b91d356846" aria-disabled="false"></div>
+            <div class="swiper-button swiper-button-next swiper-button-disabled" tabindex="-1" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-62e6c2b91d356846" aria-disabled="true"></div>
+          </div>
+          <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+            <span v-for="(image, index) in images" :key="index" class="swiper-pagination-bullet" tabindex="0" role="button" :aria-label="`Go to slide ${index + 1}`"></span>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-10 offset-md-1 col-xxl-8 offset-xxl-2">
+          <a href="#" class="btn btn-lg btn-grape rounded"> View Portfolios </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+</Portfolios>
   </div>
 </template>
 
@@ -108,16 +185,16 @@ import Cards from '../components/child/Cards.vue'
 import Slider from '../components/child/Slider.vue'
 import clients from '../components/child/clients.vue'
 import counter from '../components/child/counter.vue'
+import Info from '../components/child/Info.vue'
+
 import Testimonials from '../components/child/Testimonials.vue'
-import ProjectCount from '../components/child/ProjectCount.vue'
-import Studies from '../components/child/Studies.vue'
 import Portfolios from '../components/child/Portfolios.vue'
 
 export default {
   name: 'Home',
 
   components: {
-    Hero, Cards, Slider, clients, counter, Testimonials, ProjectCount, Studies, Portfolios,
+    Hero, Cards, Slider, clients, counter, Info, Testimonials, Portfolios,
   },
 };
 </script>

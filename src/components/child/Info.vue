@@ -1,4 +1,7 @@
 <template>
+    <slot name="home" v-bind="home">
+
+    </slot>
     <slot name="services" v-bind="services">
 
     </slot>
@@ -10,6 +13,11 @@ export default {
     name: 'Info',
     data() {
         return {
+            home: {
+                description: 'Nulla eleifend, lectus eu gravida facilisis, ipsum metus faucibus eros, vitae vulputate nibh libero ac metus phasellus magna erat Nulla eleifend, lectus eu gravida facilisis, ipsum metus faucibus eros, vitae vulputate nibh libero ac metus phasellus magna erat',
+                buttonText: 'Start Your Project',
+                buttonClass: 'btn btn-lg btn-grape rounded'
+            },
             services: {
                 missionTitle: 'OUR MISSION & GOAL',
                 missionSubtitle: 'Realize Your Business Goals For Profit',

@@ -177,12 +177,12 @@ import { mapState } from 'vuex';
 export default {
   name: 'Services',
 
-  computed: {
-    ...mapState('data', ['pages'])
-  },
-  mounted() {
-    this.$store.dispatch('data/fetchPages');
-  },
+  // computed: {
+  //   ...mapState('data', ['pages'])
+  // },
+  // mounted() {
+  //   this.$store.dispatch('data/fetchPages');
+  // },
 
   components: { Hero, Cards, Slider, Info, Form },
 }
