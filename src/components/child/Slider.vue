@@ -1,6 +1,8 @@
 <template>
   <slot name="home" v-bind="tech">
   </slot>
+
+  <slot name="about" v-bind="tech"></slot>
 </template>
 
 <script>

@@ -109,6 +109,26 @@
         </section>
       </template>
     </Slider>
+
+    <Info>
+      <template #projects="{aboutImage, aboutTitle, aboutText, contactUsLink, contactUsText}">
+        <section class="wrapper bg-white">
+          <div class="container align-self-center d-flex">
+            <div class="row cardpadding">
+              <div class="col-md-12 col-lg-6 align-self-center">
+                <img :src="aboutImage" alt="" class="img-fluid">
+              </div>
+              <div class="col-md-12 col-lg-6 align-self-center">
+                <h3 class="display-3 mb-4">{{ aboutTitle }}</h3>
+                <p class="mb-2" v-html="aboutText"></p>
+                <p class="mb-2" v-html="aboutText"></p>
+                <a :href="contactUsLink" class="btn btn-lg btn-grape rounded"> {{ contactUsText }} </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </template>
+    </Info>
   </div>
 </template>
 
@@ -116,8 +136,9 @@
 import Hero from '../components/child/Hero.vue'
 import Portfolios from '../components/child/Portfolios.vue'
 import Slider from '../components/child/Slider.vue'
+import Info from '../components/child/Info.vue'
 export default {
   name: 'Projects',
-  components: { Hero, Portfolios, Slider },
+  components: { Hero, Portfolios, Slider, Info },
 }
 </script>

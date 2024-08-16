@@ -1,5 +1,6 @@
 <template>
   <div class="content-wrapper">
+
     <Hero>
       <template #about="{ subTitle, title, typerText, description, buttonText, about, cloudsImage }">
         <section class="wrapper bg-soft-primary">
@@ -35,6 +36,7 @@
         </section>
       </template>
     </Hero>
+
     <Cards>
       <template #about="{ title, about_services }">
         <section class="wrapper bg-grey">
@@ -63,16 +65,233 @@
         </section>
       </template>
     </Cards>
+
+    <Info>
+      <template #about="{ aboutImage, aboutSubtitle, aboutTitle, aboutText, viewAllLink, viewAllText }">
+        <section class="wrapper bg-white">
+          <div class="container">
+            <div class="row d-flex cardpadding">
+              <div class="col-md-5 col-lg-4 align-self-center">
+                <img :src="aboutImage" alt="" class="img-fluid">
+              </div>
+              <div class="col-md-7 col-lg-8">
+                <div class="testimonialright align-self-center">
+                  <h2 class="fs-16 text-uppercase text-primary py-10">{{ aboutSubtitle }}</h2>
+                  <h3 class="display-3 mb-4 me-xl-5 mt-lg-n10">{{ aboutTitle }} <br
+                      class="d-none d-md-block d-lg-none" /> <span class="text-primary">{{ aboutTitleSuffix }}</span>
+                  </h3>
+                  <p class="mb-2" v-html="aboutText"></p>
+                  <p class="mb-2" v-html="aboutText"></p>
+                  <a :href="viewAllLink" class="btn btn-lg btn-grape rounded">{{ viewAllText }}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </template>
+    </Info>
+
+    <Slider>
+      <template #about="{ technologiesTitle, technologies, culyImage }">
+        <section class="wrapper bg-soft-primary">
+          <div class="container py-44 py-md-4">
+            <div class="row mb-2 mt-2">
+              <div class="col-lg-12 mx-auto text-center">
+                <h3 class="py-10 display-4"> {{ technologiesTitle }} </h3>
+
+                <div class="swiper-container mb-10" data-margin="30" data-nav="true" data-dots="false" data-items-xl="6"
+                  data-items-md="2" data-items-xs="1">
+                  <div class="swiper">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide" v-for="(technology, index) in technologies" :key="index">
+                        <img :src="technology.image" style="width: 153px; height:35px">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <figure><img :src="culyImage" alt=""></figure>
+        </section>
+      </template>
+    </Slider>
+
+    <Vision>
+    </Vision>
+
+    <Form></Form>
+
+    <section class="wrapper bg-grey">
+      <div class="container">
+        <div class="row d-flex cardpadding">
+          <div class="col-md-5 col-lg-6 align-self-center">
+            <div class="contactbox p-5">
+              <h2 class="text-uppercase text-primary line-high">{{ contactTitle }}</h2>
+              <p>{{ contactDescription }}</p>
+                <form class="contact-form needs-validation" @submit.prevent="handleSubmit">
+                  <div class="messages"></div>
+                  <div class="row gx-4">
+                    <div class="col-md-6">
+                      <div class="form-floating mb-4">
+                        <input id="form_name" type="text" v-model="formData.name" class="form-control"
+                          placeholder="Jane" required>
+                        <label for="form_name">Full Name *</label>
+                        <div class="valid-feedback"> Looks good! </div>
+                        <div class="invalid-feedback"> Please enter your first name. </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating mb-4">
+                        <input id="form_email" type="email" v-model="formData.email" class="form-control"
+                          placeholder="jane.doe@example.com" required>
+                        <label for="form_email">Email *</label>
+                        <div class="valid-feedback"> Looks good! </div>
+                        <div class="invalid-feedback"> Please provide a valid email address. </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating mb-4">
+                        <input id="form_lastname" type="text" v-model="formData.surname" class="form-control"
+                          placeholder="Doe" required>
+                        <label for="form_lastname">Contact Number</label>
+                        <div class="valid-feedback"> Looks good! </div>
+                        <div class="invalid-feedback"> Please enter your last name. </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating mb-4">
+                        <input id="form_country" type="text" v-model="formData.country" class="form-control"
+                          placeholder="Jane" required>
+                        <label for="form_country">Country</label>
+                        <div class="valid-feedback"> Looks good! </div>
+                        <div class="invalid-feedback"> Please enter your country. </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-select-wrapper mb-4">
+                        <select class="form-select" id="form-select" v-model="formData.department" required>
+                          <option selected disabled value="">Select Services</option>
+                          <option value="Sales">Sales</option>
+                          <option value="Marketing">Website Design</option>
+                          <option value="Customer Support">Wordpress Development</option>
+                        </select>
+                        <div class="valid-feedback">Custome Webiste Development </div>
+                        <div class="invalid-feedback"> Geaphic Design </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-select-wrapper mb-4">
+                        <select class="form-select" id="form-select" v-model="formData.department" required>
+                          <option selected disabled value="">Select a department</option>
+                          <option value="Sales">Sales</option>
+                          <option value="Marketing">Marketing</option>
+                          <option value="Customer Support">Customer Support</option>
+                          <option value="Customer Support">Website Development Team</option>
+                        </select>
+                        <div class="valid-feedback"> Looks good! </div>
+                        <div class="invalid-feedback"> Please select a department. </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-floating mb-4">
+                        <textarea id="form_message" v-model="formData.message" class="form-control"
+                          placeholder="Your message" style="height: 150px" required></textarea>
+                        <label for="form_message">Message *</label>
+                        <div class="valid-feedback"> Looks good! </div>
+                        <div class="invalid-feedback"> Please enter your message. </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-check mb-4">
+                        <input class="form-check-input" type="checkbox" v-model="formData.terms" id="invalidCheck"
+                          required>
+                        <label class="form-check-label" for="invalidCheck"> I agree to <a href="#" class="hover">terms
+                            and policy</a>. </label>
+                        <div class="invalid-feedback"> You must agree before submitting. </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <input type="submit" class="btn btn-primary rounded-pill btn-send mb-3" value="Send message">
+                      <p class="text-muted"><strong>*</strong> These fields are required.</p>
+                    </div>
+                  </div>
+                </form>
+            </div>
+          </div>
+          <div class="col-md-7 col-lg-6">
+            <div class="row">
+              <div class="col-md-6" v-for="(testimonial, index) in testimonials" :key="index">
+                <div class="bg-rating text-center">
+                  <div class="orangestrip"></div>
+                  <div class="text-center">
+                    <img :src="testimonial.image" alt="" class="img-fluid profileimg">
+                  </div>
+                  <div class="boxcontent">
+                    <div class="name"> <b>{{ testimonial.name }} </b> </div>
+                    <div class="position"> -{{ testimonial.position }} </div>
+                    <div class="rating mt-2"> <img src="../assets/img/rating.png" alt=""> </div>
+                    <p class="mt-5">{{ testimonial.text }}</p>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-sm btn-grape rounded"> Read More </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
-<script>
-import Hero from '../components/child/Hero.vue'
-import Cards from '../components/child/Cards.vue'
-export default {
-  name: "About",
-  components: {
-    Hero, Cards
-  }
-}
+          <script>
+          import Hero from '../components/child/Hero.vue'
+          import Cards from '../components/child/Cards.vue'
+          import Info from '../components/child/Info.vue'
+          import Slider from '../components/child/Slider.vue'
+          import Vision from '../components/child/Vision.vue'
+          import Form from '../components/child/Form.vue'
+          import profile from '../assets/img/profile2.png'
+          export default {
+            name: "About",
+            components: {
+              Hero, Cards, Info, Slider, Vision, Form
+            },
+            data() {
+              return {
+                contactTitle: 'Discuss your project',
+                contactDescription: 'We are a team of 50+ professionals, who deliver only top quality web solutions.',
+                formData: {
+                  name: '',
+                  email: '',
+                  surname: '',
+                  country: '',
+                  department: '',
+                  message: '',
+                  terms: false
+                },
+                testimonials: [
+                  {
+                    image: profile,
+                    name: 'John Doe',
+                    position: 'Manager',
+                    text: '“Nam nec tellus a odio tincidunt This lorem is Photoshop’s version of Lorem Ipsum.”'
+                  },
+                  {
+                    image: profile,
+                    name: 'John Doe',
+                    position: 'Manager',
+                    text: '“Nam nec tellus a odio tincidunt This lorem is Photoshop’s version of Lorem ”'
+                  }
+                ]
+              }
+            },
+            methods: {
+              handleSubmit() {
+                // handle form submission logic here
+                console.log(this.formData)
+              }
+            }
+          }
 </script>

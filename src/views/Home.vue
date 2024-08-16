@@ -99,13 +99,14 @@
     </Slider>
 
     <clients>
+
     </clients>
 
     <counter>
     </counter>
 
     <Info>
-      <template #home="{ description, buttonText, buttonClass, handleClick }">
+      <template #home="{ description, buttonText, buttonClass }">
         <section class="wrapper Background1">
           <div class="container pt-5 pt-lg-6 pt-xl-6 pt-xxl-5 pb-lg-5 pb-xl-5 pb-xxl-0">
             <div class="row gx-md-8 gx-xl-12 gy-10 align-items-center text-center text-lg-start">
@@ -115,9 +116,9 @@
                     class="text-primary"> Studies </span></h3>
                 <p class="lead fs-24 lh-sm mb-7 pe-xxl-15">{{ description }}</p>
                 <div class="d-inline-flex me-2">
-                  <button :class="buttonClass" @click="handleClick">
+                  <router-link :class="buttonClass" to="/our-projects">
                     {{ buttonText }}
-                  </button>
+                  </router-link>
                 </div>
               </div>
               <!--/column -->
@@ -133,49 +134,86 @@
         </section>
       </template>
     </Info>
-<Portfolios>
-  <template #home="{images,  swiperMargin, swiperItemsXxl,  swiperItemsMd, swiperItemsXs}">
-  <section class="wrapper Background2">
-    <div class="container-fluid px-md-6 pt-3 pb-4 pb-md-4">
-      <div class="row text-center pb-7">
-        <div class="col-md-10 offset-md-1 col-xxl-8 offset-xxl-2">
-          <h3 class="display-4 mb-2"> Our <span class="text-primary"> Portfolios </span> </h3>
-        </div>
-      </div>
-      <div class="row mx-auto text-center pb-md-4">
-        <div class="swiper-container blog grid-view mb-14 mb-md-14 swiper-container-0" :data-margin="swiperMargin" data-nav="false" data-dots="true" :data-items-xxl="swiperItemsXxl" :data-items-md="swiperItemsMd" :data-items-xs="swiperItemsXs">
-          <div class="swiper-wrapper" id="swiper-wrapper-62e6c2b91d356846" aria-live="off">
-            <div v-for="(image, index) in images" :key="index" class="swiper-slide" role="group" :aria-label="` ${index + 1} / ${images.length}`">
-              <figure class="itooltip itooltip-light hover-scale rounded">
-                <a :href="image.src" data-glightbox="" data-gallery="project-1">
-                  <img :src="image.src" alt="">
-                </a>
-              </figure>
+
+    <Portfolios>
+      <template #home="{ images }">
+        <section class="wrapper Background2">
+          <div class="container-fluid px-md-6 pt-3 pb-4 pb-md-4">
+            <div class="row text-center pb-7">
+              <div class="col-md-10 offset-md-1 col-xxl-8 offset-xxl-2">
+
+                <h3 class="display-4 mb-2"> Our <span class="text-primary"> Portfolios </span> </h3>
+
+              </div>
+              <!-- /column -->
             </div>
+            <!-- /.row -->
+            <div class="row mx-auto text-center pb-md-4">
+
+              <!--/column -->
+
+
+              <div class="swiper-container blog grid-view mb-14 mb-md-14 swiper-container-0" data-margin="30"
+                data-nav="false" data-dots="true" data-items-xxl="3" data-items-md="2" data-items-xs="1">
+                <div class="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+                  <div class="swiper-wrapper" id="swiper-wrapper-62e6c2b91d356846" aria-live="off"
+                    style="cursor: grab; transform: translate3d(-2070.67px, 0px, 0px); transition-duration: 0ms;">
+                    <div class="swiper-slide" role="group" aria-label="1 / 7"
+                      style="width: 487.667px; margin-right: 30px;" v-for="(image, index) in images" :key="index">
+                      <figure class="itooltip itooltip-light hover-scale rounded">
+                        <a :href="image.src" data-glightbox="" data-gallery="project-1">
+                          <img :src="image.src" alt=""></a>
+                      </figure>
+                    </div>
+                  </div>
+                  <!--/.swiper-wrapper -->
+                  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                </div>
+                <!-- /.swiper -->
+                <div class="swiper-controls">
+                  <div class="swiper-navigation">
+                    <div class="swiper-button swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"
+                      aria-controls="swiper-wrapper-62e6c2b91d356846" aria-disabled="false"></div>
+                    <div class="swiper-button swiper-button-next swiper-button-disabled" tabindex="-1" role="button"
+                      aria-label="Next slide" aria-controls="swiper-wrapper-62e6c2b91d356846" aria-disabled="true">
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+                    <span class="swiper-pagination-bullet" tabindex="0" role="button"
+                      aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0"
+                      role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet"
+                      tabindex="0" role="button" aria-label="Go to slide 3"></span><span
+                      class="swiper-pagination-bullet" tabindex="0" role="button"
+                      aria-label="Go to slide 4"></span><span
+                      class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button"
+                      aria-label="Go to slide 5" aria-current="true"></span></div>
+                </div>
+              </div>
+              <!-- /.swiper-container -->
+
+
+
+
+
+
+              <!--/column -->
+
+              <div class="row text-center ">
+                <div class="col-md-10 offset-md-1 col-xxl-8 offset-xxl-2">
+
+                  <router-link to="/testimonials" class="btn btn-lg btn-grape rounded"> View Portfolios </router-link>
+
+                </div>
+                <!-- /column -->
+              </div>
+            </div>
+            <!--/.row -->
           </div>
-          <!--/.swiper-wrapper -->
-          <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-        </div>
-        <!-- /.swiper -->
-        <div class="swiper-controls">
-          <div class="swiper-navigation">
-            <div class="swiper-button swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-62e6c2b91d356846" aria-disabled="false"></div>
-            <div class="swiper-button swiper-button-next swiper-button-disabled" tabindex="-1" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-62e6c2b91d356846" aria-disabled="true"></div>
-          </div>
-          <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
-            <span v-for="(image, index) in images" :key="index" class="swiper-pagination-bullet" tabindex="0" role="button" :aria-label="`Go to slide ${index + 1}`"></span>
-          </div>
-        </div>
-      </div>
-      <div class="row text-center">
-        <div class="col-md-10 offset-md-1 col-xxl-8 offset-xxl-2">
-          <a href="#" class="btn btn-lg btn-grape rounded"> View Portfolios </a>
-        </div>
-      </div>
-    </div>
-  </section>
-</template>
-</Portfolios>
+          <!-- /.container -->
+        </section>
+      </template>
+    </Portfolios>
   </div>
 </template>
 

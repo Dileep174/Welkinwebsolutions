@@ -38,10 +38,10 @@ export default {
         { src: pp15 },
         { src: pp16 }
       ],
-      swiperMargin: 30,
-      swiperItemsXxl: 3,
-      swiperItemsMd: 2,
-      swiperItemsXs: 1,
+      // swiperMargin: 30,
+      // swiperItemsXxl: 3,
+      // swiperItemsMd: 2,
+      // swiperItemsXs: 1,
     
       },
       pro: {
