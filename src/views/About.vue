@@ -121,7 +121,7 @@
     <Vision>
     </Vision>
 
-    <Form></Form>
+    <!-- <Form></Form> -->
 
     <section class="wrapper bg-grey">
       <div class="container">
@@ -130,94 +130,8 @@
             <div class="contactbox p-5">
               <h2 class="text-uppercase text-primary line-high">{{ contactTitle }}</h2>
               <p>{{ contactDescription }}</p>
-                <form class="contact-form needs-validation" @submit.prevent="handleSubmit">
-                  <div class="messages"></div>
-                  <div class="row gx-4">
-                    <div class="col-md-6">
-                      <div class="form-floating mb-4">
-                        <input id="form_name" type="text" v-model="formData.name" class="form-control"
-                          placeholder="Jane" required>
-                        <label for="form_name">Full Name *</label>
-                        <div class="valid-feedback"> Looks good! </div>
-                        <div class="invalid-feedback"> Please enter your first name. </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-floating mb-4">
-                        <input id="form_email" type="email" v-model="formData.email" class="form-control"
-                          placeholder="jane.doe@example.com" required>
-                        <label for="form_email">Email *</label>
-                        <div class="valid-feedback"> Looks good! </div>
-                        <div class="invalid-feedback"> Please provide a valid email address. </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-floating mb-4">
-                        <input id="form_lastname" type="text" v-model="formData.surname" class="form-control"
-                          placeholder="Doe" required>
-                        <label for="form_lastname">Contact Number</label>
-                        <div class="valid-feedback"> Looks good! </div>
-                        <div class="invalid-feedback"> Please enter your last name. </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-floating mb-4">
-                        <input id="form_country" type="text" v-model="formData.country" class="form-control"
-                          placeholder="Jane" required>
-                        <label for="form_country">Country</label>
-                        <div class="valid-feedback"> Looks good! </div>
-                        <div class="invalid-feedback"> Please enter your country. </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-select-wrapper mb-4">
-                        <select class="form-select" id="form-select" v-model="formData.department" required>
-                          <option selected disabled value="">Select Services</option>
-                          <option value="Sales">Sales</option>
-                          <option value="Marketing">Website Design</option>
-                          <option value="Customer Support">Wordpress Development</option>
-                        </select>
-                        <div class="valid-feedback">Custome Webiste Development </div>
-                        <div class="invalid-feedback"> Geaphic Design </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-select-wrapper mb-4">
-                        <select class="form-select" id="form-select" v-model="formData.department" required>
-                          <option selected disabled value="">Select a department</option>
-                          <option value="Sales">Sales</option>
-                          <option value="Marketing">Marketing</option>
-                          <option value="Customer Support">Customer Support</option>
-                          <option value="Customer Support">Website Development Team</option>
-                        </select>
-                        <div class="valid-feedback"> Looks good! </div>
-                        <div class="invalid-feedback"> Please select a department. </div>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="form-floating mb-4">
-                        <textarea id="form_message" v-model="formData.message" class="form-control"
-                          placeholder="Your message" style="height: 150px" required></textarea>
-                        <label for="form_message">Message *</label>
-                        <div class="valid-feedback"> Looks good! </div>
-                        <div class="invalid-feedback"> Please enter your message. </div>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="form-check mb-4">
-                        <input class="form-check-input" type="checkbox" v-model="formData.terms" id="invalidCheck"
-                          required>
-                        <label class="form-check-label" for="invalidCheck"> I agree to <a href="#" class="hover">terms
-                            and policy</a>. </label>
-                        <div class="invalid-feedback"> You must agree before submitting. </div>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <input type="submit" class="btn btn-primary rounded-pill btn-send mb-3" value="Send message">
-                      <p class="text-muted"><strong>*</strong> These fields are required.</p>
-                    </div>
-                  </div>
-                </form>
+                <!-- form -->
+                 <Form></Form>
             </div>
           </div>
           <div class="col-md-7 col-lg-6">
@@ -236,7 +150,7 @@
                   </div>
                 </div>
               </div>
-              <a href="#" class="btn btn-sm btn-grape rounded"> Read More </a>
+              <router-link to="/testimonials" class="btn btn-sm btn-grape rounded"> Read More </router-link>
             </div>
           </div>
         </div>
@@ -251,7 +165,7 @@
           import Info from '../components/child/Info.vue'
           import Slider from '../components/child/Slider.vue'
           import Vision from '../components/child/Vision.vue'
-          import Form from '../components/child/Form.vue'
+          import Form from '../components/child/projectForm.vue'
           import profile from '../assets/img/profile2.png'
           export default {
             name: "About",
@@ -262,15 +176,7 @@
               return {
                 contactTitle: 'Discuss your project',
                 contactDescription: 'We are a team of 50+ professionals, who deliver only top quality web solutions.',
-                formData: {
-                  name: '',
-                  email: '',
-                  surname: '',
-                  country: '',
-                  department: '',
-                  message: '',
-                  terms: false
-                },
+                
                 testimonials: [
                   {
                     image: profile,
@@ -285,12 +191,6 @@
                     text: '“Nam nec tellus a odio tincidunt This lorem is Photoshop’s version of Lorem ”'
                   }
                 ]
-              }
-            },
-            methods: {
-              handleSubmit() {
-                // handle form submission logic here
-                console.log(this.formData)
               }
             }
           }

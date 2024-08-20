@@ -148,7 +148,7 @@
                 <h2 class="text-uppercase text-primary line-high">{{ missionTitle }}</h2>
                 <h3 class="display-3 mb-4">{{ missionSubtitle }}</h3>
                 <p class="mb-2">{{ missionDescription }}</p>
-                <a href="#" class="btn btn-lg btn-grape rounded">{{ contactUsButtonText }}</a>
+                <router-link to="/contact-us" class="btn btn-lg btn-grape rounded">{{ contactUsButtonText }}</router-link>
               </div>
               <div class="col-md-12 col-lg-6">
                 <img :src="missionImage" alt="" class="img-fluid">
@@ -160,6 +160,7 @@
     </Info>
 
 <Form ></Form>
+    <!-- backend data rendered -->
     <!-- <div v-for="page in pages" :key="page.id">
       <h1>{{ page.title.rendered }}</h1>
     </div> -->
@@ -171,7 +172,7 @@ import Hero from '../components/child/Hero.vue'
 import Cards from '../components/child/Cards.vue'
 import Slider from '../components/child/Slider.vue'
 import Info from '../components/child/Info.vue'
-import Form from '../components/child/Form.vue'
+import Form from '../components/child/serviceForm.vue'
 import { mapState } from 'vuex';
 
 export default {

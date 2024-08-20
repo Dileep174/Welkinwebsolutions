@@ -40,7 +40,7 @@
                                 <!-- /column -->
                                 <div class="col-md-6">
                                     <div class="form-select-wrapper mb-4">
-                                        <select class="form-select" id="form-select" v-model="department" required>
+                                        <select class="form-select" id="form-select" v-model="depart" required>
                                             <option selected disabled value="">Select a department</option>
                                             <option value="Sales">Sales</option>
                                             <option value="Marketing">Marketing</option>
@@ -95,7 +95,7 @@
 
 <script>
 import video from '../../assets/img/video.png'
-import { mapActions } from 'vuex';
+// import { mapActions } from 'vuex';
 
 export default {
     data() {
@@ -103,7 +103,7 @@ export default {
             name: '',
             surname: '',
             email: '',
-            department: '',
+            depart: '',
             message: '',
             terms: false,
             mission: {
@@ -120,8 +120,9 @@ export default {
                 name: this.name,
                 surname: this.surname,
                 email: this.email,
-                department: this.department,
-                message: this.message
+                depart: this.depart,
+                message: this.message,
+                terms: this.terms
             };
             this.$store.dispatch('email/sendEmail', formData);
         }

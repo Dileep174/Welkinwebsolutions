@@ -3,6 +3,8 @@
   </slot>
 
   <slot name="about" v-bind="tech"></slot>
+
+  <slot name="testimonial" v-bind="tech"></slot>
 </template>
 
 <script>

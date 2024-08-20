@@ -202,7 +202,7 @@
               <div class="row text-center ">
                 <div class="col-md-10 offset-md-1 col-xxl-8 offset-xxl-2">
 
-                  <router-link to="/testimonials" class="btn btn-lg btn-grape rounded"> View Portfolios </router-link>
+                  <router-link to="/our-projects" class="btn btn-lg btn-grape rounded"> View Portfolios </router-link>
 
                 </div>
                 <!-- /column -->
@@ -224,15 +224,13 @@ import Slider from '../components/child/Slider.vue'
 import clients from '../components/child/clients.vue'
 import counter from '../components/child/counter.vue'
 import Info from '../components/child/Info.vue'
-
-import Testimonials from '../components/child/Testimonials.vue'
 import Portfolios from '../components/child/Portfolios.vue'
 
 export default {
   name: 'Home',
 
   components: {
-    Hero, Cards, Slider, clients, counter, Info, Testimonials, Portfolios,
+    Hero, Cards, Slider, clients, counter, Info, Portfolios,
   },
 };
 </script>

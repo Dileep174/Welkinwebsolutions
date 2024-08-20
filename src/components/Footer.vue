@@ -4,14 +4,12 @@
       <div class="row gy-3 gy-lg-0">
         <div class="col-md-4 col-lg-3">
           <div class="widget">
-            <img class="mb-4" src="../assets/img/logo.png" alt="">
+            <img class="mb-4" :src="logoUrl" alt="">
 
             <nav class="nav social social-white">
-              <a href="#"><i class="uil uil-twitter"></i></a>
-              <a href="#"><i class="uil uil-facebook-f"></i></a>
-              <a href="#"><i class="uil uil-dribbble"></i></a>
-              <a href="#"><i class="uil uil-instagram"></i></a>
-              <a href="#"><i class="uil uil-youtube"></i></a>
+              <a v-for="(social, index) in socialLinks" :key="index" :href="social.href">
+                <i :class="social.icon"></i>
+              </a>
             </nav>
             <!-- /.social -->
           </div>
@@ -21,9 +19,9 @@
         <div class="col-md-4 col-lg-3">
           <div class="widget">
             <h4 class="widget-title text-white mb-3">Get in Touch</h4>
-            <address class="pe-xl-15 pe-xxl-17">Moonshine St. 14/05 Light City, London, United Kingdom</address>
-            <a href="mailto:#">info@email.com</a> <br>
-            <a href="00 (123) 456 78 90">00 (123) 456 78 90 </a>
+            <address class="pe-xl-15 pe-xxl-17">{{ address }}</address>
+            <a :href="`mailto:${email}`">{{ email }}</a> <br>
+            <a :href="`tel:${phone}`">{{ phone }}</a>
           </div>
           <!-- /.widget -->
         </div>
@@ -32,12 +30,9 @@
           <div class="widget">
             <h4 class="widget-title text-white mb-3">Navigation</h4>
             <ul class="list-unstyled  mb-0">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Our Services</a></li>
-              <li><a href="#">Our Projects</a></li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Testimonials</a></li>
-              <li><a href="#">Contact Us</a></li>
+              <li v-for="(navItem, index) in navigation" :key="index">
+                <a :href="navItem.href">{{ navItem.text }}</a>
+              </li>
             </ul>
           </div>
           <!-- /.widget -->
@@ -46,34 +41,16 @@
         <div class="col-md-12 col-lg-3">
           <div class="widget">
             <h4 class="widget-title text-white mb-3">Our Newsletter</h4>
-            <p class="mb-5 text-white">Subscribe to our newsletter to get our news &amp; deals delivered to you.</p>
+            <p class="mb-5 text-white">{{ newsletterText }}</p>
             <div class="newsletter-wrapper">
-              <!-- Begin Mailchimp Signup Form -->
-              <div id="mc_embed_signup2">
-                <form
-                  action="https://elemisfreebies.us20.list-manage.com/subscribe/post?u=aa4947f70a475ce162057838d&amp;id=b49ef47a9a"
-                  method="post" id="mc-embedded-subscribe-form2" name="mc-embedded-subscribe-form"
-                  class="validate dark-fields" target="_blank" novalidate="">
-                  <div id="mc_embed_signup_scroll2">
-                    <div class="mc-field-group input-group form-floating">
-                      <input type="email" value="" name="EMAIL" class="required email form-control"
-                        placeholder="Email Address" id="mce-EMAIL2">
-                      <label for="mce-EMAIL2">Email Address</label>
-                      <input type="submit" value="Join" name="subscribe" id="mc-embedded-subscribe2"
-                        class="btn btn-primary ">
-                    </div>
-                    <div id="mce-responses2" class="clear">
-                      <div class="response" id="mce-error-response2" style="display:none"></div>
-                      <div class="response" id="mce-success-response2" style="display:none"></div>
-                    </div>
-                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
-                        name="b_ddc180777a163e0f9f66ee014_4b1bcfa0bc" tabindex="-1" value=""></div>
-                    <div class="clear"></div>
-                  </div>
-                </form>
-              </div>
-              <!--End mc_embed_signup-->
+              <form @submit.prevent="subscribeToNewsletter">
+                <div class="mc-field-group input-group form-floating">
+                  <input type="email" v-model="newsletterEmail" class="required email form-control"
+                    placeholder="Email Address" id="mce-EMAIL2">
+                  <label for="mce-EMAIL2">Email Address</label>
+                  <input type="submit" value="Join" class="btn btn-primary ">
+                </div>
+              </form>
             </div>
             <!-- /.newsletter-wrapper -->
           </div>
@@ -83,8 +60,7 @@
 
         <hr class="mt-6 mt-md-5 mb-3" style="color:#fff;">
         <div class="d-md-flex align-items-center justify-content-center">
-          <p class="mb-0 mb-lg-0 text-white">© Copyright © 2022 welkin solutions All Rights Reserved.Terms of Use |
-            Privacy Policy | Disclaimer</p>
+          <p class="mb-0 mb-lg-0 text-white">{{ copyrightText }}</p>
 
           <!-- /.social -->
         </div>
@@ -103,12 +79,40 @@
 </template>
 
 <script>
+import logo from '../assets/img/logo.png'
 export default {
   name: 'Footer',
-      
-  mounted() {
-    theme.init();
-      TyperSetup();
+  data() {
+    return {
+      logoUrl: logo,
+      socialLinks: [
+        { href: '#', icon: 'uil uil-twitter' },
+        { href: '#', icon: 'uil uil-facebook-f' },
+        { href: '#', icon: 'uil uil-dribbble' },
+        { href: '#', icon: 'uil uil-instagram' },
+        { href: '#', icon: 'uil uil-youtube' }
+      ],
+      address: 'Moonshine St. 14/05 Light City, London, United Kingdom',
+      email: 'info@email.com',
+      phone: '00 (123) 456 78 90',
+      navigation: [
+        { text: 'Home', href: '#' },
+        { text: 'Our Services', href: '#' },
+        { text: 'Our Projects', href: '#' },
+        { text: 'About Us', href: '#' },
+        { text: 'Testimonials', href: '#' },
+        { text: 'Contact Us', href: '#' }
+      ],
+      newsletterText: 'Subscribe to our newsletter to get our news & deals delivered to you.',
+      newsletterEmail: '',
+      copyrightText: '© Copyright © 2022 welkin solutions All Rights Reserved.Terms of Use | Privacy Policy | Disclaimer'
+    };
   },
-}
+  methods: {
+    subscribeToNewsletter() {
+      // Add your newsletter subscription logic here
+      console.log('Subscribed to newsletter with email:', this.newsletterEmail);
+    }
+  }
+};
 </script>

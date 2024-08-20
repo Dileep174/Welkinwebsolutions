@@ -1,5 +1,6 @@
 <template>
     <div class="content-wrapper">
+
         <Hero>
             <template #testimonial="{ subTitle, title, typerText, description, buttonText, testimonial, cloudsImage }">
                 <section class="wrapper bg-soft-primary">
@@ -35,6 +36,7 @@
                 </section>
             </template>
         </Hero>
+
         <Cards>
             <template #testimonial="{ title, subTitle, image1, image2 }">
                 <section class="wrapper bg-grey">
@@ -68,16 +70,107 @@
                 </section> <!-- /section -->
             </template>
         </Cards>
+
+        <Reviews>
+
+        </Reviews>
+
+        <Slider>
+            <template #testimonial="{ technologiesTitle, technologies, culyImage }">
+                <section class="wrapper">
+                    <div class="container py-44 py-md-4">
+                        <div class="row mb-2 mt-2">
+                            <div class="col-lg-12 mx-auto text-center">
+                                <h3 class="py-10 display-4"> {{ technologiesTitle }} </h3>
+
+                                <div class="swiper-container mb-10" data-margin="30" data-nav="true" data-dots="false"
+                                    data-items-xl="6" data-items-md="2" data-items-xs="1">
+                                    <div class="swiper">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide" v-for="(technology, index) in technologies"
+                                                :key="index">
+                                                <img :src="technology.image" style="width: 153px; height:35px">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <figure><img :src="culyImage" alt=""></figure>
+                </section>
+            </template>
+        </Slider>
+
+
+        <!-- Form -->
+        <section class="wrapper bg-grey">
+            <div class="container ">
+
+                <!-- /.row -->
+                <div class="row d-flex cardpadding">
+
+                    <!--/column -->
+
+                    <div class="col-md-5 col-lg-6 align-self-center">
+                        <div class="contactbox p-5">
+                            <h2 class="text-uppercase text-primary line-high">{{ formSec.title }}</h2>
+                            <p>{{ formSec.description }}</p>
+
+                            <Form></Form>
+
+                        </div>
+                    </div>
+
+                    <!--/column -->
+                    <div class="col-md-7 col-lg-6">
+                        <Info>
+                            <template
+                                #about="{ aboutImage, aboutSubtitle, aboutTitle, aboutText, viewAllLink, viewAllText }">
+                                <div class="testimonialright align-self-center">
+                                    <h2 class="fs-16 text-uppercase text-primary py-10">{{ aboutSubtitle }}</h2>
+                                    <h3 class="display-3 mb-4 me-xl-5 mt-lg-n10">{{ aboutTitle }} <br
+                                            class="d-none d-md-block d-lg-none" /> <span class="text-primary">{{
+                aboutTitleSuffix }}</span>
+                                    </h3>
+                                    <p class="mb-2" v-html="aboutText"></p>
+                                    <p class="mb-2" v-html="aboutText"></p>
+                                    <a :href="viewAllLink" class="btn btn-lg btn-grape rounded">{{ viewAllText }}</a>
+                                </div>
+                            </template>
+                        </Info>
+                    </div>
+                    <!--/column -->
+
+                </div>
+                <!--/.row -->
+
+            </div>
+            <!-- /.container -->
+        </section>
     </div>
 </template>
 
 <script>
 import Hero from '../components/child/Hero.vue'
 import Cards from '../components/child/Cards.vue'
+import Reviews from '../components/child/Reviews.vue'
+import Slider from '../components/child/Slider.vue'
+import Form from '../components/child/projectForm.vue'
+import Info from '../components/child/Info.vue'
 export default {
     name: 'Testimonials',
     components: {
-        Hero, Cards
+        Hero, Cards, Reviews, Slider, Form, Info
+    },
+    data() {
+        return{
+           formSec: {
+             title: 'Discuss your project',
+            description: 'We are a team of 50+ professionals, who deliver only top quality web solutions.'
+           }
+        }
     }
 }
 </script>
