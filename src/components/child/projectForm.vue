@@ -119,8 +119,6 @@ export default {
 
             };
             this.$store.dispatch('projectForm/sendEmail', formData);
-
-            // console.log(this.formData)
         }
     }
 

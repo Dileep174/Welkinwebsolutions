@@ -96,12 +96,12 @@ export default {
       email: 'info@email.com',
       phone: '00 (123) 456 78 90',
       navigation: [
-        { text: 'Home', href: '#' },
-        { text: 'Our Services', href: '#' },
-        { text: 'Our Projects', href: '#' },
-        { text: 'About Us', href: '#' },
-        { text: 'Testimonials', href: '#' },
-        { text: 'Contact Us', href: '#' }
+        { text: 'Home', href: '/' },
+        { text: 'Our Services', href: '/our-services' },
+        { text: 'Our Projects', href: '/our-projects' },
+        { text: 'About Us', href: '/about-us' },
+        { text: 'Testimonials', href: '/testimonials' },
+        { text: 'Contact Us', href: '/contact-us' }
       ],
       newsletterText: 'Subscribe to our newsletter to get our news & deals delivered to you.',
       newsletterEmail: '',

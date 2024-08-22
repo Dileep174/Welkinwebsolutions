@@ -142,3 +142,9 @@ export default {
   components: { Hero, Portfolios, Slider, Info },
 }
 </script>
+
+<style>
+ul li {
+  padding: 2px;
+}
+</style>
